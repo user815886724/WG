@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <title></title>
+  <meta name="renderer" content="webkit" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=2" />
+  <link type="text/css" rel="stylesheet" href="../../layui/css/layui.css">
+  <link type="text/css" rel="stylesheet" href="../../../css/layui-pro.css">
+  <style>
+    .eleTrees {
+      display: none;
+      width: 100%;
+      height: 200px;
+      border: 1px solid #ccc;
+      overflow: auto;
+      z-index: 10000;
+      position: absolute;
+      top: 100%;
+      background-color: #fff;
+    }
+  </style>
+</head>
+
+<body>
+  <div style="padding: 16px 16px 0;">
+    <!-- 页面内容 -->
+    <div class="layui-pro-list-toolbar">
+      <div class="layui-inline layui-hide" id="filterNameWrap">
+        <div class="layui-inline" style="line-height: 34px;" id="filterName"></div>
+        <div class="layui-inline">
+          <input type="text" placeholder="请选择" class="layui-input" id="filterVal" autocomplete="off">
+          <input class="layui-input layui-hide" id="filterCode">
+          <div class="eleTrees" lay-filter="treeFilter"></div>
+        </div>
+      </div>
+      <div class="layui-hide" style="float: right;" id="searchWrap">
+        <div class="layui-inline layui-pro-search-container">
+          <input class="layui-input" id="searchTxt" placeholder="请输入" autocomplete="off">
+          <button class="layui-btn" data-type="reload">搜索</button>
+        </div>
+      </div>
+    </div>
+    <table class="layui-hide" id="dsBaseFilterTable" lay-filter="dsBaseFilter"></table>
+    <input id="dsBaseFilterResult" type="hidden"></input>
+    <div style="background: #f8f8f8;padding: 16px;" id="dsBaseFilterResultTxt">
+      暂无选择
+    </div>
+    <!-- END.页面内容 -->
+  </div>
+  <script src="../../../lib/layui/layui.js"></script>
+  <script src="./modal.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,62 @@
+.table-attrs-wrap .table-attrs-list {
+  margin: 10px 0;
+  overflow: auto;
+}
+
+.table-attrs-wrap:not(.checkbox-wrap) .eleTree-node-content-icon {
+  position: relative;
+  top: -5px;
+}
+
+.table-attrs-wrap:not(.checkbox-wrap) .eleTree-node-content-label {
+  display: inline-block;
+  width: calc(100% - 25px);
+  position: relative;
+  /* top: 6px; */
+}
+
+.table-attrs-wrap:not(.checkbox-wrap) .eleTree-node-content-label>.label {
+  display: inline-block;
+  width: auto;
+  max-width: 80%;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+.table-attrs-wrap:not(.checkbox-wrap) .eleTree-node-content-label>.label.none {
+  width: 80%;
+  text-align: center;
+  padding: 3px;
+}
+
+.table-attrs-wrap:not(.checkbox-wrap) .eleTree-node-content-label .dsicon {
+  padding-right: 5px;
+  color: #1890ff;
+}
+
+.table-attrs-wrap:not(.checkbox-wrap) .eleTree-node-content-label>.operate {
+  position: absolute;
+  right: 0;
+  width: 20%;
+  text-align: right;
+  display: inline-block;
+  top: 0;
+}
+
+.table-attrs-wrap:not(.checkbox-wrap) .eleTree-node-content-label>.operate>i {
+  padding-left: 5px;
+}
+
+
+.table-attrs-wrap:not(.checkbox-wrap) .table-attrs-list.special .eleTree-node .eleTree-node-content-icon>.layui-icon {
+  color: transparent !important;
+}
+
+.table-attrs-wrap:not(.checkbox-wrap) .table-attrs-list.special .eleTree-node[eletree-floor="0"]:not([data-id=""])>.eleTree-node-content>.eleTree-node-content-icon>.layui-icon {
+  color: #999 !important;
+}
+
+.table-attrs-wrap:not(.checkbox-wrap) .table-attrs-list.special .eleTree-node-group .eleTree-node-content-icon>i {
+  /* color: transparent !important; */
+}

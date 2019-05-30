@@ -1,0 +1,39 @@
+
+
+.layui-form-label {
+    padding: 6px 0;
+}
+
+.layui-select {
+    box-sizing: border-box !important;
+    height: 28px;
+    line-height: 1;
+}
+
+.layui-input, .layui-textarea {
+    box-sizing: border-box !important;
+    height: 26px;
+    line-height: 1;
+}
+
+.layui-input{
+    padding: 0 10px !important;
+}
+
+.layui-form-select .layui-input {
+    box-sizing: border-box;
+    padding: 2px 30px 2px 10px !important;
+}
+
+.layui-form-select dl dd, .layui-form-select dl dt {
+    line-height: 28px;
+    text-align: left;
+}
+
+.layui-form-select dl {
+    top: 28px;
+}
+
+.layui-form-item .layui-input-inline {
+    margin: 0 10px;
+}
