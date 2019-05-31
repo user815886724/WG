@@ -5,6 +5,7 @@ import com.model.SysModularParameterEntity;
 import com.service.CommonService;
 import common.CallbackResult;
 import common.HttpUtils;
+import org.apache.commons.lang.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,19 +31,20 @@ public class CommonController {
 
     private static Logger logger = LoggerFactory.getLogger(CommonService.class);
 
-    @RequestMapping("/api/{handleAction}/{module}/{func}")
+    @RequestMapping("/api/{handleAction}/{modular}/{func}")
     @ResponseBody
-    public String forwardApi(@PathVariable("handleAction") String handleAction, @PathVariable("module")String module,
-                                     @PathVariable("func") String func, HttpServletRequest request)throws Exception{
+    public String forwardApi(@PathVariable("handleAction") String handleAction,@PathVariable("modular") String modular, @PathVariable("func") String func,
+                             HttpServletRequest request)throws Exception{
         Map<String,Object> param = request.getParameterMap();
         SysModularParameterEntity paramEntity= service.getParamEntity(handleAction);
-        //先去验证
-        try{
-            String result = HttpUtils.doPost(paramEntity.getUrl(),param);
+        //TODO 先去验证
+        //查询地址访问
+        if(paramEntity != null && StringUtils.isNotEmpty(paramEntity.getUrl())){
+            String result = HttpUtils.doPost(paramEntity.getUrl() + "/" + modular + "/" + func,param);
             return result;
-        }catch (Exception e){
-            logger.info(e.getMessage());
-            throw new  Exception("请求\""+ handleAction + "\"模块异常");
+        }else{
+            logger.info(handleAction + " 在数据库中未配置");
+            throw new Exception(handleAction + " 在数据库中未配置");
         }
     }
 }
