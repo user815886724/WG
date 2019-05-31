@@ -105,7 +105,19 @@ layui.extend({
             }
         },
         refresh : function () {
-            
+            var url = $("iframe").attr("src");
+            $("iframe").attr("src",url);
+        },
+        fullscreen:function () {
+            if($("#fullscreen").hasClass("layui-icon layui-icon-screen-restore")){
+                $("#fullscreen").removeClass("layui-icon layui-icon-screen-restore")
+                $("#fullscreen").addClass("layui-icon layui-icon-screen-full")
+                exitFullscreen()
+            }else{
+                $("#fullscreen").removeClass("layui-icon layui-icon-screen-full")
+                $("#fullscreen").addClass("layui-icon layui-icon-screen-restore")
+                launchFullScreen(document.documentElement)
+            }
         }
     };
 
@@ -117,3 +129,28 @@ layui.extend({
         }
     });
 });
+// 全屏方法
+function launchFullScreen(element) {
+    if(element.requestFullscreen) {
+        element.requestFullscreen();
+    } else if(element.mozRequestFullScreen) {
+        element.mozRequestFullScreen();
+    } else if(element.webkitRequestFullscreen) {
+        element.webkitRequestFullscreen();
+    } else if(element.msRequestFullscreen) {
+        element.msRequestFullscreen();
+    }
+}
+// 退出全屏
+function exitFullscreen() {
+    var elem=document;
+    if(elem.webkitCancelFullScreen){
+        elem.webkitCancelFullScreen();
+    }else if(elem.mozCancelFullScreen){
+        elem.mozCancelFullScreen();
+    }else if(elem.cancelFullScreen){
+        elem.cancelFullScreen();
+    }else if(elem.exitFullscreen){
+        elem.exitFullscreen();
+    }
+}
