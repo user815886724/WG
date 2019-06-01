@@ -1,8 +1,12 @@
 package com.service;
 
+import com.model.SysMenuEntity;
 import com.model.SysModularParameterEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
+import java.util.Map;
 
 /**
  * @author huangwh
@@ -12,4 +16,6 @@ import org.springframework.transaction.annotation.Transactional;
 public interface CommonService {
 
     SysModularParameterEntity getParamEntity(String code);
+
+    List<Map<String,Object>> getMenuList() throws Exception;
 }

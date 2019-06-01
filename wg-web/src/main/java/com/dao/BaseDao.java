@@ -31,6 +31,7 @@ public interface BaseDao<T,ID extends Serializable> {
      * @return
      */
     List<T> findBySql(String tableName, String filed, Object o);
+
     Object findObjectBySql(String tableName,String filed,Object o);
 
     /**
@@ -43,23 +44,23 @@ public interface BaseDao<T,ID extends Serializable> {
 
     /**
      * 多字段查询分页
-     * @param tablename 表名
+     * @param tableName 表名
      * @param map 以map存储key,value
      * @param start 第几页
-     * @param pageNumer 一个页面的条数
+     * @param pageNumber 一个页面的条数
      * @return
      */
-    List<T> findByMoreFiledPages(String tablename, LinkedHashMap<String,Object> map, int start, int pageNumer);
+    List<T> findByMoreFiledPages(String tableName, LinkedHashMap<String,Object> map, int start, int pageNumber);
     /**
      * 一个字段的分页
-     * @param  tablename 表名
+     * @param  tableName 表名
      * @param filed 字段名
      * @param o 字段参数
      * @param start 第几页
      * @param pageNumber 一个页面多少条数据
      * @return
      */
-    List<T> findPages(String tablename,String filed,Object o,int start,int pageNumber);
+    List<T> findPages(String tableName,String filed,Object o,int start,int pageNumber);
     /**
      * 根据表的id删除数据
      * @param  entity
@@ -87,4 +88,19 @@ public interface BaseDao<T,ID extends Serializable> {
      * @return
      */
     Object findCount(String tableName, LinkedHashMap<String,Object> map);
+
+
+    /**
+     * 单个对象sql执行语句
+     * @param sql
+     * @return
+     */
+    Object executeSqlSingle(String sql,Object o);
+
+    /**
+     * 多个实体返回对象
+     * @param sql
+     * @return
+     */
+    List<T> executeSql(String sql,T o);
 }

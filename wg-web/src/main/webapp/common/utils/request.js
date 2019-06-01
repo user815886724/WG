@@ -74,24 +74,26 @@
       503: "服务不可用，服务器暂时过载或维护。",
       504: "网关超时。"
     };
-    var status = result.resultCode;
-    
+    var status = response.status;
+
     if (status === 200 || (status+'').indexOf(6) === 0) {
-      return result.details;
+      return result;
     } else if (status === 401 || (status === 500 && result.message === '当前没有登录用户')) {
       // 跳转到登录页
       location.href = loginUrl;
     } else {
       // var errortext = codeMessage[status];
-      var errortext = result.message.indexOf('<!DOCTYPE html>') >=0 ? codeMessage[status] : result.message;
+        if(result.message){
+            var errortext = result.message.indexOf('<!DOCTYPE html>') >=0 ? codeMessage[status] : result.message;
 
-      layer.alert(
-        "请求错误，请求状态：" + status + "，错误信息：" + errortext
-      );
-      var error = new Error(errortext);
-      error.name = status;
-      error.response = response;
-      throw error;
+            layer.alert(
+                "请求错误，请求状态：" + status + "，错误信息：" + errortext
+            );
+            var error = new Error(errortext);
+            error.name = status;
+            error.response = response;
+            throw error;
+        }
     }
   }
 

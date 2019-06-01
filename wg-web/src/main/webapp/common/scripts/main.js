@@ -7,13 +7,47 @@ layui.extend({
 
     // 跳转配置
     element.on('nav(menu)',function (e) {
-        $("iframe").attr("src",$(e).attr("data_url"));
-        removeSm();
+        if($(e).attr("data_url")){
+            $("iframe").attr("src",$(e).attr("data_url"));
+            removeSm();
+        }
     });
 
-    // request.post('/test/server/function',{data:123}).then(function (result) {
-    //
-    // });
+    request.post('/menu/getMenuList').then(function (result) {
+        if(result.success){
+            if(result.details){
+                var menus = result.details;
+                var html = "";
+                for(var i in menus){
+                    var openItem = "";
+                    if(menus[i].isOpen == 1){
+                        openItem = "layui-nav-itemed";
+                    }else{
+                        openItem = "";
+                    }
+                    var menuHtml = parentMenuHtml.replace("${open}",openItem).replace("${icon}",menus[i].icon).replace("${menuName}",menus[i].menuName);
+                    var childrenHtml = "";
+                    if(menus[i].children){
+                        for(var ci in menus[i].children){
+                            childrenHtml += childrenItemHtml.replace("${dataUrl}",menus[i].children[ci].dataUrl).replace("${menuName}",menus[i].children[ci].menuName);
+                        }
+                    }
+                    menuHtml = menuHtml.replace("${childrenItem}",childrenHtml);
+                    html += menuHtml;
+                }
+                $("#menuMain").html(html);
+                $("li[name='menuParentItem']").on('click', function(){
+                    var type = $(this).attr('layadmin-event');
+                    if(type){
+                        active[type] ? active[type].call(this) : '';
+                    }
+                });
+                element.render();
+            }
+        }else{
+            layer.alert(result.message, {icon: 5});
+        }
+    });
 
 
     function initFlexible(){
@@ -128,6 +162,13 @@ layui.extend({
             active[type] ? active[type].call(this) : '';
         }
     });
+
+
+    var parentMenuHtml = "<li class='layui-nav-item ${open}' layadmin-event='open' name='menuParentItem'>" +
+        "<a href='javascript:;'><i class='layui-icon ${icon}'></i><cite>${menuName}</cite></a>" +
+        "<dl class='layui-nav-child'>${childrenItem}</dl></li>";
+
+    var childrenItemHtml = "<dd><a href='javascript:;' data_url='${dataUrl}'>${menuName}</a></dd>";
 });
 // 全屏方法
 function launchFullScreen(element) {

@@ -165,17 +165,17 @@ public class BaseDaoImpl<T,ID extends Serializable> implements BaseDao<T,ID> {
         sql=sql.substring(0,sql.length()-2);
         sql+="where u.id=? ";
         System.out.println(sql+"--------sql语句-------------");
-        int resurlt=0;
+        int result=0;
         try {
             Query query=entityManager.createQuery(sql);
             query.setParameter(1,map.get("id"));
-            resurlt= query.executeUpdate();
+            result= query.executeUpdate();
         }catch (Exception e){
             System.out.println("更新出错-----------------------");
             e.printStackTrace();
 
         }
-        return resurlt;
+        return result;
     }
 
     @Transactional
@@ -197,17 +197,34 @@ public class BaseDaoImpl<T,ID extends Serializable> implements BaseDao<T,ID> {
         Set<String> set=null;
         set=map.keySet();
         List<String> list=new ArrayList<>(set);
-        List<Object> filedlist=new ArrayList<>();
+        List<Object> filedList=new ArrayList<>();
         for (String filed:list){
             sql+="u."+filed+"=? and ";
-            filedlist.add(filed);
+            filedList.add(filed);
         }
         sql=sql.substring(0,sql.length()-4);
         System.out.println(sql+"--------sql语句-------------");
         Query query=entityManager.createQuery(sql);
-        for (int i=0;i<filedlist.size();i++){
-            query.setParameter(i+1,map.get(filedlist.get(i)));
+        for (int i=0;i<filedList.size();i++){
+            query.setParameter(i+1,map.get(filedList.get(i)));
         }
         return query.getSingleResult();
+    }
+
+    @Override
+    public Object executeSqlSingle(String sql,Object o) {
+        Query query=entityManager.createNativeQuery(sql,o.getClass());
+        Object result = query.getSingleResult();
+        entityManager.close();
+        return result;
+    }
+
+
+    @Override
+    public List<T> executeSql(String sql,T o) {
+        Query query=entityManager.createNativeQuery(sql,o.getClass());
+        List<T> result = query.getResultList();
+        entityManager.close();
+        return result;
     }
 }
