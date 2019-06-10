@@ -1,0 +1,270 @@
+/* #5FB878 #009688 38px */
+/* add common */
+body {
+  font-family: -apple-system,BlinkMacSystemFont,Segoe UI,PingFang SC,Hiragino Sans GB,Microsoft YaHei,Helvetica Neue,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: #fff;
+}
+html {
+  font-family: sans-serif;
+  line-height: 1.15;
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+  -ms-overflow-style: scrollbar;
+  -webkit-tap-highlight-color: rgba(0,0,0,0);
+  background-color: transparent;
+}
+html, body {height: 100%;}
+a,a:hover{color: #1890ff;}
+.layui-pro-body-bg{background-color: #f0f2f5;}
+.clearfix:after,.clearfix:before{content:"";display:table}.clearfix:after{clear:both}
+.ellipsis{overflow:hidden;display: block;text-overflow:ellipsis;white-space:nowrap;}
+.layui-table td, .layui-table th {font-size: 12px;}
+.layui-table-cell {padding: 0 8px;}
+.layui-pro-layer-fixed .layui-layer-setwin > *:not(.layui-layer-close){display: none;}
+.layui-pro-layer-fixed .layui-layer-setwin .layui-layer-close2 {right: 2px;top: -1px;opacity: 0;}
+
+/* add - page-hd - 2018.1.3 - yowi */
+.layui-pro-page-hd {background: #fff;padding: 16px 16px 0;border-bottom: 1px solid #e8e8e8;position: relative;}
+.layui-pro-page-hd-tit {font-size: 18px;color: #333;font-weight: 400;margin-bottom: 16px;}
+.layui-pro-page-hd-desc {margin-bottom: 16px;color: #666;margin-top: -6px;}
+.layui-pro-page-hd-back {position: absolute;top: 12px;right: 16px;width: 32px;height: 32px;text-align: center;cursor: pointer;transition: all .3s;}
+.layui-pro-page-hd-back > i{font-size: 32px;color: #666;vertical-align: middle;}
+.layui-pro-page-hd-back:hover {opacity: 0.8;}
+.layui-pro-page-tab-btns {text-align: right;font-size: 0;position: absolute;z-index: 9;right: 16px;top: 4px;}
+.layui-pro-page-bd{position: relative;margin: 0 auto;padding: 16px;}
+.layui-pro-page-tab {margin: 0;position: relative;}
+.layui-pro-page-hd + .layui-pro-page-tab {margin-top: -1px;}
+.layui-pro-page-tab > .layui-tab-title {background: #fff;padding: 0 16px 0;height: 44px;}
+.layui-pro-page-tab > .layui-tab-title li{line-height: 44px;}
+.layui-pro-page-tab > .layui-tab-title .layui-this:after{height: 45px;}
+
+/* add list及操作bar - 2019.1.31 - yowi */
+.layui-pro-list-header-total{text-align: center;position: relative;}
+.layui-pro-list-header-total .title{font-size: 14px;color: #999;overflow:hidden;display: block;text-overflow:ellipsis;white-space:nowrap;}
+.layui-pro-list-header-total .value{font-size: 24px;line-height: 1;margin-top: 4px;display: block;}
+.layui-pro-list-header-total em{content: "";position: absolute;top: 0;bottom: 0;margin: auto;right: 0;height: 50%;width: 1px;background: #e8e8e8;}
+.layui-pro-list-toolbar:after,.layui-pro-list-toolbar:before{content:"";display:table}.layui-pro-list-toolbar:after{clear:both}
+.layui-pro-list-toolbar+.layui-pro-list-toolbar{margin-top: 10px;}
+.layui-pro-list-toolbar .layui-inline {float: left;margin-left: 10px;}
+.layui-pro-list-toolbar .layui-inline:first-child {margin-left: 0;}
+.layui-pro-list-toolbar .layui-btn {float: left;}
+.layui-pro-list-toolbar .layui-form-label {width: auto;padding-left: 0;}
+.layui-pro-search-container {font-size: 0;}
+.layui-pro-search-container .layui-input {display: inline-block;vertical-align: top;width: 200px;border-top-right-radius: 0;border-bottom-right-radius: 0;border-right: 0;font-size: 14px;}
+.layui-pro-search-container .layui-btn {border-top-left-radius: 0;border-bottom-left-radius: 0;float: none;;}
+
+/* add - card-meta - 2018.12.30 - yowi */
+.layui-pro-card-meta {padding: 16px;background-color: #f6f7fb;font-size: 14px;color: #666;line-height: 1.5;position: relative;}
+.layui-pro-card-meta .card-meta-img{float: left;background-color: #eceff9;width: 60px;height: 60px;line-height: 60px;text-align: center;overflow: hidden;}
+.layui-pro-card-meta .card-meta-img > img {width: 100%;vertical-align: top;}
+.layui-pro-card-meta .card-meta-con{min-height: 60px;}
+.layui-pro-card-meta .card-meta-img + .card-meta-con {margin-left: 72px;}
+.layui-pro-card-meta .card-meta-title{font-size: 18px;color: #333;overflow:hidden;display: block;text-overflow:ellipsis;white-space:nowrap;}
+.layui-pro-card-meta a{font-size: 14px;color: #666;}
+.layui-pro-card-meta a:hover{color: #1890ff;}
+.layui-pro-card-meta .card-meta-title + .card-meta-desc{padding-top: 12px;}
+.layui-pro-card-meta .card-actions{border-top: 1px solid #e8e8e8;margin: 16px -16px -16px;}
+.layui-pro-card-meta .card-actions>li:not(:last-child) {border-right: 1px solid #e8e8e8;}
+.layui-pro-card-meta .card-actions>li{text-align: center;margin: 8px 0;color: #999;}
+.layui-pro-card-meta .card-actions>li>span {display: inline-block;font-size: 14px;cursor: pointer;line-height: 22px;min-width: 32px;position: relative;}
+.layui-pro-card-meta .card-actions>li>span:hover{color:#1890ff;-webkit-transition:color .3s;transition:color .3s}
+.layui-pro-card-meta .card-actions>li>span>i {font-size: 16px;line-height: 22px;}
+.layui-pro-card-meta .card-actions>li>span a{color:#999;line-height:22px;display:inline-block;width:100%}
+.layui-pro-card-meta .card-actions>li>span a:hover{color:#1890ff}
+.layui-pro-card-meta.layui-pro-card-meta-bordered {background-color: #fff;border: 1px solid #e8e8e8;}
+.layui-pro-card-meta.layui-pro-card-meta-bordered .card-actions{background-color: #f7f9fa;}
+
+/* 弹窗底部按钮组样式加区别 */
+.layui-layer > .layui-layer-btn {border-top: 1px solid #e8e8e8;padding-bottom: 10px;padding-top: 10px;}
+.layui-layer > .layui-layer-btn a{margin-top: 0;}
+
+/* add - divider - 2018.1.24 - yowi */
+.layui-pro-divider {font-size: 14px;font-variant: tabular-nums;line-height: 1.5;color: rgba(0,0,0,.65);box-sizing: border-box;margin: 0;padding: 0;list-style: none;background: #e8e8e8;}
+.layui-pro-divider, .layui-pro-divider-vertical {margin: 0 8px;display: inline-block;height: .9em;width: 1px;vertical-align: middle;position: relative;top: -.06em;}
+
+/******* btn *******/
+/* 2018.12.30 - yowi 样式美化 */
+.layui-btn{border-radius: 4px;}
+.layui-btn .layui-icon {display: inline-block;}
+.layui-btn-group .layui-btn + .layui-btn{border-left: 0;}
+.layui-btn-primary:not(.layui-btn-disabled):hover {color: #1890ff;}
+
+/******* form *******/
+/* 2019.1.22 - yowi 禁用增强样式 */
+.layui-textarea[disabled],
+.layui-input.layui-disabled[readonly],
+.layui-input[disabled] {border-color: #e6e6e6 !important;cursor: not-allowed !important;color: #C9C9C9 !important;background-color: #FBFBFB;}
+.layui-input[disabled]::-webkit-input-placeholder,
+.layui-input.layui-disabled[readonly]::-webkit-input-placeholder,
+.layui-textarea[disabled]::-webkit-input-placeholder {color: #C9C9C9 !important}
+.layui-form-label{padding-top: 7px;padding-bottom: 7px;}
+.layui-form-label::after {content: ":";position: absolute;right: 8px;top: 7px;}
+.layui-form-label.required::before {content: '*';color: #f5222d;position: absolute;top: 9px;margin-left: -10px;font-family: SimSun;}
+.layui-form-label.nowrap{width: auto;padding-left: 0;position: relative;left: 10px;}
+.layui-pro-modal-form {padding: 20px 30px 0 0;}
+
+/* 2019.2.19 - yowi 时间范围选中背景 */
+.layui-laydate-content td.laydate-selected{background-color: #e6f7ff !important;}
+
+/* add - 2019.1.30 - huanglh 表单多选框高度对齐*/
+.layui-form-checkbox i {height: 100%;}
+
+
+/******* steps *******/
+/* add - 2019.2.1 - huanglh 步骤条*/
+.layui-pro-steps .layui-pro-steps-title {overflow: auto;clear: both;position: relative;}
+.layui-pro-steps .layui-pro-steps-title > li {overflow: hidden;text-overflow: ellipsis;white-space: nowrap;margin-right: 16px;display: inline-block;width: 40%;float: left;}
+.layui-pro-steps .layui-pro-steps-title > li > span {display: inline-block;width: 32px;height: 32px;line-height: 32px;text-align: center;border-radius: 50%;font-size: 16px;background: #fff;border: 1px solid #1890ff;color: #1890ff;transition: 0.2s;}
+.layui-pro-steps .layui-pro-steps-title > li > div {display: inline-block;margin-left: 8px;transition: 0.2s;}
+.layui-pro-steps .layui-pro-steps-title > li > div > p {font-size: 16px;position: relative;padding-right: 16px;white-space: nowrap;font-weight: normal;transition: 0.2s;}
+.layui-pro-steps .layui-pro-steps-title > li > div > p::after {position: absolute;content: '';left: 100%;top: 12px;display:block;width: 9999px;height: 1px;background: #1890ff;}
+.layui-pro-steps .layui-pro-steps-title > li:last-child {width: calc(20% - 32px);margin-right: 0;}
+.layui-pro-steps .layui-pro-steps-title > li:last-child > div > p {padding-right: 0;}
+.layui-pro-steps .layui-pro-steps-title > li:last-child > div > p::after {width: 0;}
+.layui-pro-steps li.current~li > span {background: #fff;border-color: rgba(0,0,0,.25);color: rgba(0,0,0,.25);}
+.layui-pro-steps li.current~li > div > p {font-weight: normal;color: rgba(0,0,0,.45);}
+.layui-pro-steps li.current~li > div > p::after {background: #e8e8e8;}
+.layui-pro-steps li.current > span {background: #1890ff;border-color: #1890ff;color: #fff;}
+.layui-pro-steps li.current > div > p {font-weight: bold;}
+.layui-pro-steps li.current > div > p::after {background: #e8e8e8;}
+.layui-pro-steps.layui-pro-steps-vertical .layui-pro-steps-title{width: 100%;}
+.layui-pro-steps.layui-pro-steps-vertical .layui-pro-steps-title > li {width: 100%;margin-right: 0;height: 40%;margin-bottom: 8px;}
+.layui-pro-steps.layui-pro-steps-vertical .layui-pro-steps-title > li:last-child {height: calc(20% - 16px);margin-bottom: 0;}
+.layui-pro-steps.layui-pro-steps-vertical .layui-pro-steps-title > li > div > p::after {width: 1px;height: 9999px;left: -25px;top: 38px;}
+.layui-pro-steps-content .layui-pro-steps-content-item {display: none;}
+.layui-pro-steps-content .layui-pro-steps-content-item.current {display: block;}
+
+/* select - 2019.1.1 - yowi 样式美化 */
+.layui-form-select dl {max-height: 193px;}
+.layui-form-select dl dd, .layui-form-select dl dt {line-height: 22px;padding: 5px 12px}
+.layui-form-select dl dd.layui-this {background-color: #e6f7ff;color: #666;font-weight: 500;}
+
+/* dropdown - 2019.2.20 - yowi 下拉菜单 */
+.layui-pro-dropdown {display: inline-block;position: relative;}
+.layui-pro-dropdown>ul {position: absolute;display: none;top:100%;left:0px;padding: 5px 0;margin:5px 0;white-space: nowrap;line-height: 30px;min-width: 100px;box-shadow: 0 2px 4px rgba(0,0,0,.12);border: 1px solid #d2d2d2;background-color: #fff;border-radius: 2px;z-index: 900;}
+.layui-pro-dropdown>ul>h4 {color: #999;display: block;padding: 0 16px;font-size: 12px;}
+.layui-pro-dropdown>ul>li {position: relative;}
+.layui-pro-dropdown>ul>li>a {color: #333;display: block;padding: 0 16px;transition: all .3s;-webkit-transition: all .3s;}
+.layui-pro-dropdown>ul>li>a>i {font-size: 14px;margin-right:5px;}
+.layui-pro-dropdown>ul>li>a:hover {background-color: #f2f2f2;color: #000;}
+.layui-pro-dropdown.dropdown-right>ul {left:auto;right:0px;}
+.layui-pro-dropdown>ul>li.dropdown-item-disabled>a{color: #999;cursor:not-allowed;}
+.layui-pro-dropdown>ul>li.dropdown-item-disabled>a:hover{color: #999;background-color:transparent;}
+.layui-pro-dropdown>ul hr{margin: 2px 0;}
+
+/* layout-basic - 2019.2.14 - huanglh 左右结构的基本布局 */
+.layui-pro-layout-basic {height: auto;clear: both;overflow: auto;overflow-y: hidden;}
+.layui-pro-layout-basic .layui-pro-layout-basic-left {position: relative;width: 256px;min-width: 256px;max-width: 256px;min-height: 576px;float: left;border-right: 1px solid #e8e8e8;padding-right: 16px;}
+.layui-pro-layout-basic .layui-pro-layout-basic-left .layui-pro-layout-basic-left-top {position: absolute;top: 0;width: 100%;}
+.layui-pro-layout-basic:not(.layui-pro-layout-has-sider) .layui-pro-layout-basic-right {width: 100%;}
+.layui-pro-layout-basic.layui-pro-layout-has-sider .layui-pro-layout-basic-right {overflow-x: hidden;width: calc(100% - 305px);float: left;padding: 0 16px;}
+
+/* layui-pro-tree-node - 2019.2.28 - huanglh 优化 */
+.layui-pro-tree-node {width: 80%;display: inline-block;white-space: nowrap;text-overflow: ellipsis;overflow: hidden;}
+
+/* edit-table - 2019.2.14 - huanglh 基于table进行编辑输入框的优化*/
+.layui-pro-edit-table .layui-table-cell {height: 34px;line-height: 34px;overflow: visible;}
+.layui-pro-edit-table .layui-table-body, 
+.layui-pro-edit-table .layui-table-box,
+.layui-pro-edit-table .layui-table-view {overflow: visible;}
+
+/******* card *******/
+.layui-card-body {padding: 16px;}
+/* 2019.1.18 - yowi 判断card内是否只存在btn元素 */
+.layui-card-body .layui-btn-container:last-child .layui-btn {margin-bottom: 0;}
+
+/******* table *******/
+/* 2019.1.23 - yowi 动态表格样式修复   */
+.layui-table tbody tr:hover, .layui-table-hover{ background-color: #e6f7ff; }
+.layui-table-view{border-color: transparent;}
+.layui-table-page{text-align: right;padding: 20px 0 0;height: 54px;}
+
+/******* eleTree *******/
+/* #region tree */
+.eleTree{position: relative;}
+.eleTree-hide{display: none;}
+.eleTree-loadData{width: 100%;height: 100%;position: absolute;z-index: 1;top: 0px;}
+.eleTree-loadData .layui-icon{position: absolute;left: 50%;top: 50%;transform: translateX(-50%)  translateY(-50%);}
+.eleTree-node-content{cursor: pointer;height: 26px;line-height: 1.3;}
+.eleTree-node-content:hover,
+.eleTree-node-content.eleTree-node-content-active{background-color: #eee;}
+.eleTree-node-content-icon .layui-icon{padding: 6px 3px;color: #c0c4cc;font-size: 12px;display: inline-block;transform: rotate(0deg);transition: transform .3s ease-in-out;}
+.eleTree-node-content-icon .layui-icon.icon-rotate{transform: rotate(90deg);}
+.eleTree-node-content .layui-form-checkbox[lay-skin=primary] i{width: 13px;height: 14px;line-height: 1.3;}
+.eleTree-node-content-label{padding-left: 5px;}
+.eleTree-node-content-input{width: 80px;border: 1px solid #e6e6e6;outline: 0;padding: 3px 5px;font-size: 12px;}
+/* checkbox第三种状态 */
+input.eleTree-hideen[type=checkbox]{display: none;}
+.eleTree-checkbox {height: auto!important;line-height: normal!important;min-height: 12px;border: none!important;margin-right: 0;padding-left: 18px;position: relative;display: inline-block;}
+.eleTree-checkbox i {left: 0;border: 1px solid #d2d2d2;font-size: 12px;border-radius: 2px;background-color: #fff;-webkit-transition: .1s linear;transition: .1s linear;position: absolute;top: 0;color: #fff;cursor: pointer;text-align: center;width: 13px;height: 14px;line-height: 1.3;}
+.eleTree-checkbox i:hover {border-color: #1890ff;}
+.eleTree-checkbox-checked i {border-color: #1890ff;background-color: #1890ff;color: #fff;}
+.eleTree-checkbox-line:after{content: "";position: relative;width: 8px;height: 1px;background-color: #fff;display: inline-block;top: -4px;}
+.eleTree-checkbox.eleTree-checkbox-disabled i{cursor: not-allowed;background-color: #f2f6fc;border-color: #dcdfe6;color: #c2c2c2;}
+.eleTree-checkbox.eleTree-checkbox-disabled i.eleTree-checkbox-line:after{background-color: #c2c2c2;}
+.eleTree-checkbox.eleTree-checkbox-disabled i:hover{border-color: #dcdfe6;}
+#tree-menu{margin: 0;padding: 2px;position: absolute;background: #f5f5f5;border: 1px solid #979797;box-shadow: 2px 2px 2px #999;display: none;z-index: 20181205;}
+#tree-menu li>a{display: block;padding: 0 1em;text-decoration: none;width: auto;color: #000;white-space: nowrap;line-height: 2.4em;text-shadow: 1px 1px 0 #fff;border-radius: 1px;}
+#tree-menu li>a:hover{background-color: #e8eff7;box-shadow: 0 0 2px #0a6aa1;}
+.tree-menu-bg{background-color: #ccc;}
+/* #endregion */
+
+/* alert - 2019.2.27 - lym alert样式 */
+.lay-pro-alert {-webkit-box-sizing: border-box;box-sizing: border-box;margin: 0;margin-bottom: 20px; padding: 0;color: #666;font-size: 14px;position: relative;padding: 8px 15px;border-radius: 4px;background-color: #e6f7ff;border: 1px solid #91d5ff;}
+.lay-pro-alert-success{background-color: #f6ffed;border: 1px solid #b7eb8f;}
+.lay-pro-alert-warning{background-color: #fffbe6;border: 1px solid #ffe58f;}
+.lay-pro-alert-error{background-color: #fff1f0;border: 1px solid #ffa39e;}
+
+.lay-pro-alert-message {font-size: 14px;line-height: 22px;}
+.lay-pro-alert-title {display: block;margin-bottom: 4px;color: #333;font-size: 16px;}
+
+.lay-pro-alert>.dsicon {color: #1890ff;display: inline-block;line-height: 0;vertical-align: -0.125em;}
+.lay-pro-alert-success>.dsicon {color: #52c41a;}
+.lay-pro-alert-warning>.dsicon {color: #faad14;}
+.lay-pro-alert-error>.dsicon {color: #f5222d;}
+
+.lay-pro-alert-desc{padding: 15px 15px 15px 64px;}
+.lay-pro-alert-desc>.dsicon{position: absolute;top: 26px;left: 24px;font-size: 26px;}
+
+/* layui-pro-adaptive - 2019.2.27 - huanglh 表单自适应 */
+@media screen and (min-width: 1920px) {
+  .layui-pro-adaptive { width: 1000px;margin: 0 auto; }
+}
+@media screen and (min-width:1441px) and (max-width:1920px){
+  .layui-pro-adaptive { width: 60%;margin: 0 auto; }
+}
+@media screen and (min-width:769px) and (max-width:1440px){
+  .layui-pro-adaptive { width: 80%;margin: 0 auto; }
+}
+@media screen and (max-width: 768px){
+  .layui-pro-adaptive { width: 100%;margin: 0 auto; }
+}
+
+/* layui-pro-mark - 2019.3.4 - lym 记号点样式 */
+.layui-pro-mark{ display: inline-block; width: 8px; height: 8px; border-radius: 50%; margin: 0 3px;}
+
+.layui-pro-green{background-color: #87d068!important;}
+.layui-pro-gray{background-color: #c2c2c2!important;}
+
+/*table 过滤*/
+.layui-table-filter {height:100%;cursor: pointer;position: absolute;right:15px;padding:0 5px;}
+.layui-table-filter i {font-size: 16px;color: #aaa;}
+.layui-table-filter:hover i {color: #666;}
+.layui-table-filter.tableFilter-has i {color: #1E9FFF;}
+.layui-table-filter-view {width:200px;background:#FFFFFF;border: 1px solid #d2d2d2;box-shadow: 0 2px 4px rgba(0,0,0,.12);position:absolute;top:0px;left:0px;z-index:10000000;}
+.layui-table-filter-box {padding:10px;}
+.layui-table-filter-box .loading {width: 100%;height: 100%;text-align: center;line-height: 150px;}
+.layui-table-filter-box .loading i {font-size: 18px;}
+.layui-table-filter-box input.layui-input {margin-bottom:10px;}
+.layui-table-filter-box ul {border: 1px solid #eee;height:150px;overflow: auto;margin-bottom:10px;padding:5px 10px 5px 10px;}
+.layui-table-filter-box ul li {padding:3px 0;}
+.layui-table-filter-box ul.radio {padding:0px;}
+.layui-table-filter-box ul.radio li {padding:0px;}
+.layui-table-filter-box ul li .layui-form-radio {display: block;color:#666;margin:0px;padding:0px;transition: .1s linear;}
+.layui-table-filter-box ul li .layui-form-radio div {display: block;padding:0 10px;}
+.layui-table-filter-box ul li .layui-form-radio i {display: none;}
+.layui-table-filter-box ul li .layui-form-radio:hover {background:#f9f9f9;}
+.layui-table-filter-box ul li .layui-form-radio.layui-form-radioed {background:#1890ff;color: #fff;}

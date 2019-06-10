@@ -35,6 +35,7 @@
     dsSteps: layui.cache.paths.assetsPath + "/lib/extend/ds-steps",
     dsBaseFilter: layui.cache.paths.assetsPath + "/lib/extend/ds-base-filter/index",
     dsKeyValue: layui.cache.paths.assetsPath + "/lib/extend/ds-keyvalue",
+    iconPicker : layui.cache.paths.assetsPath +'/lib/extend/iconPicker'
   }).define(['ES6Promise', 'layer'], function(exports){
     var $ = layui.jquery;
 

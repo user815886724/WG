@@ -4,12 +4,12 @@ import com.dao.BaseDao;
 import com.model.SysMenuEntity;
 import com.model.SysModularParameterEntity;
 import com.service.CommonService;
+import common.CallbackResult;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 import utils.JavaBeanUtil;
 
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -46,5 +46,28 @@ public class CommonServiceImpl implements CommonService {
             list.add(parent);
         }
         return list;
+    }
+
+
+    @Override
+    public SysMenuEntity getMenuDetail(String id) {
+        String getMenuSql = "SELECT * FROM sys_menu WHERE ID = '%s'";
+        SysMenuEntity sysMenuEntity = (SysMenuEntity)baseDao.executeSqlSingle(String.format(getMenuSql,id),SysMenuEntity.class);
+        return sysMenuEntity;
+    }
+
+
+    @Transactional
+    @Override
+    public CallbackResult updateSysMenu(SysMenuEntity sysMenuEntity) {
+        CallbackResult callbackResult = new CallbackResult();
+        Boolean tag = baseDao.update(sysMenuEntity);
+        if(tag){
+            callbackResult.setSuccess(true);
+            callbackResult.setMessage("更新成功");
+        }else{
+            callbackResult.setMessage("更新失败");
+        }
+        return callbackResult;
     }
 }

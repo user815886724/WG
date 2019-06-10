@@ -48,17 +48,6 @@ public class CommonController {
         }
     }
 
-    @RequestMapping("/api/menu/getMenuList")
-    @ResponseBody
-    public CallbackResult getMenuList(){
-        CallbackResult callbackResult = new CallbackResult(false);
-        try{
-            callbackResult.setDetails(service.getMenuList());
-            callbackResult.setSuccess(true);
-        }catch (Exception e){
-            callbackResult.setMessage(e.getMessage());
-        }
-        return callbackResult;
-    }
+
 
 }

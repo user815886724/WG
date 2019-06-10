@@ -71,6 +71,7 @@ public interface BaseDao<T,ID extends Serializable> {
      * @param e
      * @return
      */
+
     boolean update(T e);
     /**
      * 根据传入的map遍历key,value拼接字符串，以id为条件更新
@@ -95,7 +96,7 @@ public interface BaseDao<T,ID extends Serializable> {
      * @param sql
      * @return
      */
-    Object executeSqlSingle(String sql,Object o);
+    T executeSqlSingle(String sql,Class<T> o);
 
     /**
      * 多个实体返回对象

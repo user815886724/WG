@@ -2,6 +2,7 @@ package com.dao.impl;
 
 import com.dao.BaseDao;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityManager;
@@ -135,6 +136,9 @@ public class BaseDaoImpl<T,ID extends Serializable> implements BaseDao<T,ID> {
 
         return list;
     }
+
+
+
     @Transactional
     @Override
     public boolean update(T entity) {
@@ -147,6 +151,8 @@ public class BaseDaoImpl<T,ID extends Serializable> implements BaseDao<T,ID> {
         }
         return flag;
     }
+
+
     @Transactional
     @Override
     public Integer updateMoreFiled(String tableName, LinkedHashMap<String, Object> map) {
@@ -212,9 +218,9 @@ public class BaseDaoImpl<T,ID extends Serializable> implements BaseDao<T,ID> {
     }
 
     @Override
-    public Object executeSqlSingle(String sql,Object o) {
-        Query query=entityManager.createNativeQuery(sql,o.getClass());
-        Object result = query.getSingleResult();
+    public T executeSqlSingle(String sql,Class<T> o) {
+        Query query=entityManager.createNativeQuery(sql,o);
+        T result = (T)query.getSingleResult();
         entityManager.close();
         return result;
     }
