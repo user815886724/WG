@@ -218,19 +218,42 @@ public class BaseDaoImpl<T,ID extends Serializable> implements BaseDao<T,ID> {
     }
 
     @Override
+    public Object executeSql(String sql) {
+        try {
+            Query query = entityManager.createNativeQuery(sql);
+            Object result = query.getSingleResult();
+            entityManager.close();
+            return result;
+        }catch (Exception e){
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+    @Override
     public T executeSqlSingle(String sql,Class<T> o) {
-        Query query=entityManager.createNativeQuery(sql,o);
-        T result = (T)query.getSingleResult();
-        entityManager.close();
-        return result;
+        try {
+            Query query = entityManager.createNativeQuery(sql, o);
+            T result = (T) query.getSingleResult();
+            entityManager.close();
+            return result;
+        }catch (Exception e){
+            e.printStackTrace();
+            return null;
+        }
     }
 
 
     @Override
-    public List<T> executeSql(String sql,T o) {
-        Query query=entityManager.createNativeQuery(sql,o.getClass());
-        List<T> result = query.getResultList();
-        entityManager.close();
-        return result;
+    public List<T> executeSql(String sql,Class<T> o) {
+        try{
+            Query query=entityManager.createNativeQuery(sql,o);
+            List<T> result = query.getResultList();
+            entityManager.close();
+            return result;
+        }catch (Exception e){
+            e.printStackTrace();
+            return null;
+        }
     }
 }

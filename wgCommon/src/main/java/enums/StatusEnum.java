@@ -7,7 +7,7 @@ package enums;
  */
 public enum  StatusEnum {
 
-    LIVE(1,"存活"),DEATH(0,"死亡");
+    YES(1,"是"),NO(0,"否");
 
     private Integer code;
     private String desc;

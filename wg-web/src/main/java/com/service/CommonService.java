@@ -20,7 +20,19 @@ public interface CommonService {
 
     List<Map<String,Object>> getMenuList() throws Exception;
 
+    List<SysMenuEntity> getChildMenuList(String id) throws Exception;
+
     SysMenuEntity getMenuDetail(String id);
 
+    Map<String,Object> getMenuDetailMap(String id);
+
     CallbackResult updateSysMenu(SysMenuEntity sysMenuEntity);
+
+    Integer getMaxParentSort();
+
+    Integer getMaxChildrenSort(String parentId);
+
+    CallbackResult saveSysMenu(SysMenuEntity sysMenuEntity);
+
+    CallbackResult deleteSysMenu(String id);
 }

@@ -99,9 +99,16 @@ public interface BaseDao<T,ID extends Serializable> {
     T executeSqlSingle(String sql,Class<T> o);
 
     /**
+     * 执行SQL语句
+     * @param sql
+     * @return
+     */
+    Object executeSql(String sql);
+
+    /**
      * 多个实体返回对象
      * @param sql
      * @return
      */
-    List<T> executeSql(String sql,T o);
+    List<T> executeSql(String sql,Class<T> o);
 }

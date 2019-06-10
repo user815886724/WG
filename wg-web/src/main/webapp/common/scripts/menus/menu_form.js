@@ -56,7 +56,7 @@ layui.define(['base', 'dsTable', 'request','indexTree','laytpl','layer','iconPic
             }else{
                 $("#childOrder").css('display','none');
             }
-            request.post('/menu/GetMenuDetail',{id:id}).then(function(result) {
+            request.post('/menu/getMenuDetail',{id:id}).then(function(result) {
                 if(result.success){
                     // $("#thismenu").text(result.details.title);
                     var detail = result.details
@@ -93,16 +93,16 @@ layui.define(['base', 'dsTable', 'request','indexTree','laytpl','layer','iconPic
                 }
             });
             //单独处理子菜单排序
-            // if(hasChild == '1'){
-            //     request.post('/daasIam/ListChildMenu',{id:id}).then(function(result) {
-            //         var li = '';
-            //         $.each(result,function (i,temp) {
-            //             li += '<li id='+temp.id+' name="childmenus" style="margin-left: 20px">'+temp.title+'</li>';
-            //         })
-            //         $("#template").empty();
-            //         $("#template").append(li);
-            //     });
-            // }
+            if(hasChild == '1'){
+                request.post('/menu/listChildMenu',{id:id}).then(function(result) {
+                    var li = '';
+                    $.each(result.details,function (i,temp) {
+                        li += '<li id='+temp.id+' name="childmenus" style="margin-left: 20px">'+temp.menuName+'</li>';
+                    })
+                    $("#template").empty();
+                    $("#template").append(li);
+                });
+            }
         },
         bindEvent:function () {
             var self = this;
@@ -133,12 +133,14 @@ layui.define(['base', 'dsTable', 'request','indexTree','laytpl','layer','iconPic
                     delete field.pluginCode;
                 }
                 new Promise(function(resolve, reject) {
-                    request('/menu/UpdateMenuDetail', {
+                    request('/menu/updateMenuDetail', {
                     method: 'POST',
                         data: field
                 }).then(function(result) {
-                    if(result){
+                    if(result.success){
                         resolve();
+                    }else{
+
                     }
                 });
                 if(hasChild == '1'){
@@ -148,11 +150,11 @@ layui.define(['base', 'dsTable', 'request','indexTree','laytpl','layer','iconPic
                         var value = $(this).attr('id');
                         ids.push(value);
                     });
-                    request('/daasIam/UpdateSiteMapOrder', {
+                    request('/menu/updateMenuSort', {
                         method: 'POST',
                         data: {menuIds:ids.join(",")}
                     }).then(function(result) {
-                        if(result){
+                        if(result.success){
                             resolve();
                         }
                     });

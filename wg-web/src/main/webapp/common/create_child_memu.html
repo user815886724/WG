@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>增加子菜单</title>
+
+    <link type="text/css" rel="stylesheet" href="lib/layui/css/layui.css">
+    <link type="text/css" rel="stylesheet" href="lib/layui/css/layui-pro.css" media="all">
+    <style>
+        .layui-form-label {
+            width: 20% !important;
+        }
+        .layui-input-block {
+            width:50% !important;
+            margin-left:29% !important;
+        }
+    </style>
+</head>
+<body class="layui-pro-body-bg" style="background-color: white">
+    <div class="layui-pro-page-bd">
+        <form class="layui-form layui-pro-form" action="" id="childMemuForm" lay-filter="childMemuForm">
+            <div class="layui-form-item">
+                <label class="layui-form-label required">菜单名称</label>
+                <div class="layui-input-block"><input type="text" id="title" name="menuName" lay-verify="required" autocomplete="off" class="layui-input" maxlength="150"></div>
+            </div>
+            <div class="layui-form-item">
+                <div class="layui-form-item layui-hide">
+                    <input type="button" lay-submit lay-filter="LAY-app-workorder-submit" id="LAY-app-workorder-submit" value="保存">
+                </div>
+            </div>
+        </form>
+    </div>
+    <script type="text/javascript" src="lib/layui/layui.js"></script>
+    <script>
+        layui.extend({
+            base: 'scripts/base',
+            childMenuAdd : 'scripts/menus/create_child_menu'
+        }).use(['base','childMenuAdd'],function () {
+            var childMenuAdd = layui.childMenuAdd;
+            childMenuAdd.control();
+        });
+    </script>
+</body>
+</html>

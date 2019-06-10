@@ -132,11 +132,16 @@ layui.define(['base', 'request', 'eleTree','layer'], function(exports) {
                 var menuStr = '';
                 if(data.id == 'root'){
                     menuStr='<ul id="tree-menu">' +
-                        '<li class="register"><a href="javascript:;">注册平台</a></li>' +
+                        '<li class="register"><a href="javascript:;">添加主菜单</a></li>' +
                         '</ul>';
-                }else{
+                }else if(data.parentId){
                     menuStr='<ul id="tree-menu">' +
-                        '<li class="addNode"><a href="javascript:;">添加子节点</a></li>' +
+                        '<li class="remove"><a href="javascript:;">删除</a></li>' +
+                        '</ul>';
+                }
+                else{
+                    menuStr='<ul id="tree-menu">' +
+                        '<li class="addNode"><a href="javascript:;">添加子菜单</a></li>' +
                         '<li class="remove"><a href="javascript:;">删除</a></li>' +
                         '</ul>';
                 }
@@ -154,7 +159,7 @@ layui.define(['base', 'request', 'eleTree','layer'], function(exports) {
                     var index = layer.open({
                         title: "创建子菜单",
                         type: 2,
-                        content: './create_child_memu.html?parentId='+data.id+"&portalCode="+data.portalCode,
+                        content: './create_child_memu.html?parentId='+data.id,
                         maxmin: true,
                         btn: ['保存', '取消'],
                         area: ['460px', "320px"],
@@ -168,7 +173,7 @@ layui.define(['base', 'request', 'eleTree','layer'], function(exports) {
                     if (data.id) {
                         layer.confirm('确定删除该菜单吗？', function(index) {
                             var deleteParams = { id: data.id };
-                            request.post('/daasIam/DeleteSiteMap', deleteParams).then(function(res) {
+                            request.post('/menu/deleteMenu', deleteParams).then(function(res) {
                                 if (res.success) {
                                     layer.close(index);
                                     layer.msg('删除成功！', { time: 1000 });
@@ -184,9 +189,9 @@ layui.define(['base', 'request', 'eleTree','layer'], function(exports) {
                 })
                 $("#tree-menu li.register").off().on("click",function(e) {
                     var index = layer.open({
-                        title: "注册平台",
+                        title: "注册主菜单",
                         type: 2,
-                        content: './register_platform.html',
+                        content: './create_child_memu.html',
                         maxmin: true,
                         btn: ['保存', '取消'],
                         area: ['560px', "320px"],
