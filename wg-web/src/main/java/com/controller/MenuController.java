@@ -28,8 +28,6 @@ public class MenuController {
     @Autowired
     private CommonService service;
 
-    private static Logger logger = LoggerFactory.getLogger(MenuController.class);
-
     @RequestMapping("/getMenuList")
     @ResponseBody
     public CallbackResult getMenuList(){
