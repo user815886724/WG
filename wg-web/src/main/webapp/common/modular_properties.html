@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>配置列表</title>
+
+    <meta name="renderer" content="webkit">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
+
+    <link type="text/css" rel="stylesheet" href="lib/layui/css/layui.css">
+    <link type="text/css" rel="stylesheet" href="lib/layui/admin/admin.css?v=1.2.1 pro-1" media="all">
+    <link type="text/css" rel="stylesheet" href="lib/layui/css/layui-pro.css" media="all">
+    <link type="text/css" rel="stylesheet" href="lib/layui/css/global.css" media="all">
+    <style>
+        .modular-title {
+            padding: 10px;
+            line-height: 50px;
+            text-align: center;
+            font-size: 25px;
+            color: #009688;
+        }
+        .modular-detail {
+            padding: 10px;
+            line-height: 50px;
+            text-align: center;
+            font-size: 15px;
+            color: black;
+        }
+    </style>
+
+    <script type="text/javascript" src="lib/layui/layui.js"></script>
+    <script type="text/javascript" src="scripts/modular/modular_properties.js"></script>
+</head>
+<body class="layui-pro-body-bg">
+    <div class="layui-pro-page-hd">
+        <div class="layui-pro-page-hd-tit">配置管理</div>
+        <a href="javascript:;" class="layui-pro-page-hd-back" id="propertiesBack">
+            <i class="dsicon dsicon-left-circle"></i>
+        </a>
+        <div class="layui-pro-page-hd-desc">通过页面管理服务的配置，多台服务器配置负载均衡可以通过服务标题进行区分</div>
+    </div>
+    <div class="layui-pro-page-bd">
+        <div class="layui-card">
+            <div class="layui-card-body">
+                <div class="layui-pro-list-toolbar" style="padding: 0 0 10px 0;">
+                    <div class="layui-inline">
+                        <form class="layui-form">
+                            <select name="labelSelect" id="labelSelect" lay-filter="labelSelect"></select>
+                        </form>
+                    </div>
+                    <div class="layui-inline">
+                        <a href="javascript:;" class="layui-btn" layer-event="createProperties" name="operation">新增配置</a>
+                        <a href="javascript:;" class="layui-btn" style="background-color: #607D8B;" layer-event="createModular" name="api-operation">标题管理</a>
+                        <a href="javascript:;" class="layui-btn layui-btn-danger" layer-event="delete">删除</a>
+                    </div>
+                </div>
+                <table class="layui-hide" id="test" lay-filter="testFilter"></table>
+            </div>
+        </div>
+    </div>
+    <script type="text/html" id="barDemo">
+        <a href="javascript:;" lay-event="editModular" >修改</a>
+        <span class="layui-pro-divider layui-pro-divider-vertical"></span>
+        <a href="javascript:;" name="api-operation" lay-event="deleteModular">删除</a>
+    </script>
+</body>
+</html>

@@ -1,8 +1,12 @@
 package com.dao;
 
+import common.CommonPageInfo;
+import common.PageParam;
+
 import java.io.Serializable;
 import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * @author huangwh
@@ -96,7 +100,7 @@ public interface BaseDao<T,ID extends Serializable> {
      * @param sql
      * @return
      */
-    T executeSqlSingle(String sql,Class<T> o);
+    <T> T executeSqlSingle(String sql,Class<T> o);
 
     /**
      * 执行SQL语句
@@ -110,5 +114,17 @@ public interface BaseDao<T,ID extends Serializable> {
      * @param sql
      * @return
      */
-    List<T> executeSql(String sql,Class<T> o);
+    <T> List executeSql(String sql,Class<T> o);
+
+
+    /**
+     *
+     * @param sql SQL语句条件语句用{参数}注入参数值
+     * @param pageParam 分页条件
+     * @param param 额外的查询条件
+     * @param resultType 返回的结果实体
+     * @param <T> 结果类型
+     * @return 返回分页结果
+     */
+    <T> CommonPageInfo getPageData(String sql, PageParam pageParam, Map<String,Object> param, Class<T> resultType);
 }

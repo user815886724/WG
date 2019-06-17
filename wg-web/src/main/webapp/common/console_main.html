@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="renderer" content="webkit">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <title>控制台选择</title>
+    <link type="text/css" rel="stylesheet" href="lib/layui/css/layui.css" media="all">
+    <link type="text/css" rel="stylesheet" href="lib/layui/css/layui-pro.css" media="all">
+    <link id="layuicss-layuiAdmin" rel="stylesheet" href="lib/layui/admin/admin.css?v=1.2.1 pro-1" media="all">
+    <style>
+        .layuiadmin-card-text:hover{
+            background-color:#F0F0F0;
+        }
+        .layuiadmin-card-text{
+            cursor: pointer;
+        }
+        a{
+            color: #009688;
+        }
+    </style>
+
+    <script type="text/javascript" src="lib/layui/layui.js"></script>
+    <script type="text/javascript" src="scripts/console_main.js"></script>
+</head>
+<body class="layui-pro-body-bg">
+    <div class="layui-pro-page-hd">
+        <div class="layui-pro-page-hd-tit">控制台管理</div>
+        <div class="layui-pro-page-hd-desc">通过选择进入后台管理的模块，进行后台管理</div>
+    </div>
+    <div class="layui-pro-page-bd">
+        <div class="layui-card">
+            <div class="layui-card-body">
+                <div class="layui-pro-layout-basic layui-pro-layout-has-sider">
+                    <div class="layui-card">
+                        <div class="layui-card-header">模块面板</div>
+                        <div class="layui-card-body">
+                            <div class="layui-row layui-col-space10">
+                                <div class="layui-col-xs12 layui-col-sm4">
+                                    <div class="layuiadmin-card-text" onclick="toManagePage('menu.html')">
+                                        <div class="layui-text-top">
+                                            <i class="layui-icon layui-icon-set"></i>
+                                            <a href="javascript:;">菜单设置</a>
+                                        </div>
+                                        <p class="layui-text-center">可以通过操作设置界面对左边的菜单导航条进行有效的管理，下一次刷新生效</p>
+                                        <p class="layui-text-bottom">
+                                            <a href="javascript:;">布局</a>
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="layui-col-xs12 layui-col-sm4">
+                                    <div class="layuiadmin-card-text" onclick="toManagePage('modular.html')">
+                                        <div class="layui-text-top">
+                                            <i class="layui-icon layui-icon-template"></i>
+                                            <a href="javascript:;">模块管理</a>
+                                        </div>
+                                        <p class="layui-text-center">通过手工配置修改服务间的配置，并具备重启功能，可以使模块之间统一有效的管理</p>
+                                        <p class="layui-text-bottom">
+                                            <a href="javascript:;">功能</a>
+                                        </p>
+                                    </div>
+                                </div>
+                                <!--<div class="layui-col-xs12 layui-col-sm4">-->
+                                    <!--<div class="layuiadmin-card-text">-->
+                                        <!--<div class="layui-text-top"><i class="layui-icon layui-icon-form"></i><a href="http://www.layui.com/doc/modules/form.html#val">form</a></div>-->
+                                        <!--<p class="layui-text-center">增加 form.val(filter, fields)方法，用于给指定表单集合的元素初始赋值</p>-->
+                                        <!--<p class="layui-text-bottom"><a href="http://www.layui.com/doc/modules/form.html">表单</a><span>7 天前</span></p>-->
+                                    <!--</div>-->
+                                <!--</div>-->
+                                <!--<div class="layui-col-xs12 layui-col-sm4">-->
+                                    <!--<div class="layuiadmin-card-text">-->
+                                        <!--<div class="layui-text-top"><i class="layui-icon layui-icon-form"></i><a href="http://www.layui.com/doc/modules/form.html">form</a></div>-->
+                                        <!--<p class="layui-text-center">对 select 组件新增上下键（↑ ↓）回车键（Enter）选择功能</p>-->
+                                        <!--<p class="layui-text-bottom"><a href="http://www.layui.com/doc/modules/form.html">表单</a><span>7 天前</span></p>-->
+                                    <!--</div>-->
+                                <!--</div>-->
+                                <!--<div class="layui-col-xs12 layui-col-sm4">-->
+                                    <!--<div class="layuiadmin-card-text">-->
+                                        <!--<div class="layui-text-top"><i class="layui-icon layui-icon-form"></i><a href="http://www.layui.com/doc/modules/form.html">form</a></div>-->
+                                        <!--<p class="layui-text-center">优化 switch 开关组件，让其能根据文本自由伸缩宽</p>-->
+                                        <!--<p class="layui-text-bottom"><a href="http://www.layui.com/doc/modules/form.html">表单</a><span>7 天前</span></p>-->
+                                    <!--</div>-->
+                                <!--</div>-->
+                                <!--<div class="layui-col-xs12 layui-col-sm4">-->
+                                    <!--<div class="layuiadmin-card-text">-->
+                                        <!--<div class="layui-text-top"><i class="layui-icon layui-icon-form"></i><a href="http://www.layui.com/doc/modules/form.html">form</a></div>-->
+                                        <!--<p class="layui-text-center">修复 checkbox 复选框组件在高分辨屏下出现的样式不雅问题</p>-->
+                                        <!--<p class="layui-text-bottom"><a href="http://www.layui.com/doc/modules/form.html">表单</a><span>7 天前</span></p>-->
+                                    <!--</div>-->
+                                <!--</div>-->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

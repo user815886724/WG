@@ -1,50 +1,37 @@
-package com.model;
+package com.response;
 
-import javax.persistence.Column;
+import com.model.SysModularParameterEntity;
+
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.Table;
-import java.io.Serializable;
 
 /**
  * @author huangwh
- * @date 2019/5/29
- * @time 23:54
+ * @date 2019/6/14
+ * @time 0:08
  */
-
 @Entity
-@Table(name = "sys_modular_parameter")
-public class SysModularParameterEntity implements Serializable {
+public class GetModularListResponse {
 
     @Id
     private String code;
 
-    @Column
     private String application;
 
-    @Column
     private String type;
 
-    @Column
     private String desp;
 
-    @Column
     private String getway;
 
-    public String getGetway() {
-        return getway;
+    private String typeName;
+
+    public String getTypeName() {
+        return typeName;
     }
 
-    public void setGetway(String getway) {
-        this.getway = getway;
-    }
-
-    public String getApplication() {
-        return application;
-    }
-
-    public void setApplication(String application) {
-        this.application = application;
+    public void setTypeName(String typeName) {
+        this.typeName = typeName;
     }
 
     public String getCode() {
@@ -53,6 +40,14 @@ public class SysModularParameterEntity implements Serializable {
 
     public void setCode(String code) {
         this.code = code;
+    }
+
+    public String getApplication() {
+        return application;
+    }
+
+    public void setApplication(String application) {
+        this.application = application;
     }
 
     public String getType() {
@@ -69,5 +64,13 @@ public class SysModularParameterEntity implements Serializable {
 
     public void setDesp(String desp) {
         this.desp = desp;
+    }
+
+    public String getGetway() {
+        return getway;
+    }
+
+    public void setGetway(String getway) {
+        this.getway = getway;
     }
 }

@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>模块管理页面</title>
+    <meta name="renderer" content="webkit">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
+
+    <link type="text/css" rel="stylesheet" href="lib/layui/css/layui.css">
+    <link type="text/css" rel="stylesheet" href="lib/layui/admin/admin.css?v=1.2.1 pro-1" media="all">
+    <link type="text/css" rel="stylesheet" href="lib/layui/css/layui-pro.css" media="all">
+    <link type="text/css" rel="stylesheet" href="lib/layui/css/global.css" media="all">
+
+    <script type="text/javascript" src="lib/layui/layui.js"></script>
+    <script type="text/javascript" src="scripts/modular/modular.js"></script>
+    <style>
+        .api-title {
+            padding: 10px;
+            line-height: 50px;
+            text-align: center;
+            font-size: 25px;
+            color: #009688;
+        }
+        .api-detail {
+            padding: 10px;
+            line-height: 50px;
+            text-align: center;
+            font-size: 15px;
+            color: black;
+        }
+        .api-operation {
+            padding: 10px;
+            line-height: 50px;
+            text-align: center;
+            font-size: 13px;
+            color: black;
+        }
+        .shade{
+            box-shadow: 1px 5px 7px 0px rgba(0, 0, 0, 0.25), inset 0 2px 20px 20px rgba(255, 255, 255, 0.9), inset 0 -2px 0px 0px;
+        }
+        a:hover{
+            color: #0000FF;
+        }
+    </style>
+</head>
+<body class="layui-pro-body-bg">
+    <div class="layui-pro-page-hd">
+        <div class="layui-pro-page-hd-tit">模块管理</div>
+        <a href="javascript:;" class="layui-pro-page-hd-back" id="modularBack">
+            <i class="dsicon dsicon-left-circle"></i>
+        </a>
+        <div class="layui-pro-page-hd-desc">通过平台注册模块进行管理新增、修改、删除等</div>
+    </div>
+    <div class="layui-pro-page-bd">
+        <div class="layui-card">
+            <div class="layui-card-header">代理网关服务配置</div>
+            <div class="layui-card-body">
+                <div class="layui-row shade">
+                    <div class="layui-col-xs4 layui-col-sm4 layui-col-md4">
+                        <div class="api-title">IP地址</div>
+                    </div>
+                    <div class="layui-col-xs4 layui-col-sm4 layui-col-md4">
+                        <div class="api-detail">
+                            <span id="api-ip"></span>
+                            <input id="ipInput" type="text" style="display: none" name="ip"
+                                   placeholder="请输入代理网关IP" autocomplete="off" class="layui-input">
+                        </div>
+                    </div>
+                    <div class="layui-col-xs4 layui-col-sm4 layui-col-md4">
+                        <div class="api-operation">
+                            <a href="javascript:;" name="api-operation" id="ipEdit" layer-event="ipEdit">修改</a>
+                            <div id="ipOperation" style="display: none">
+                                <a href="javascript:;" name="api-operation" layer-event="ipSave">保存</a>
+                                <span class="layui-pro-divider layui-pro-divider-vertical" ></span>
+                                <a href="javascript:;" layer-event="ipCancel" name="api-operation">取消</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="layui-row shade">
+                    <div class="layui-col-xs4 layui-col-sm4 layui-col-md4">
+                        <div class="api-title">端口</div>
+                    </div>
+                    <div class="layui-col-xs4 layui-col-sm4 layui-col-md4">
+                        <div class="api-detail">
+                            <span id="api-port"></span>
+                            <input id="portInput" type="text" style="display: none" name="port"
+                                   placeholder="请输入代理网关端口" autocomplete="off" class="layui-input">
+                        </div>
+                    </div>
+                    <div class="layui-col-xs4 layui-col-sm4 layui-col-md4">
+                        <div class="api-operation">
+                            <a href="javascript:;" id="portEdit" name="api-operation" layer-event="portEdit">修改</a>
+                            <div id="portOperation" style="display: none">
+                                <a href="javascript:;" name="api-operation" layer-event="portSave">保存</a>
+                                <span class="layui-pro-divider layui-pro-divider-vertical"></span>
+                                <a href="javascript:;" name="api-operation" layer-event="portCancel">取消</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="layui-card">
+            <div class="layui-card-body">
+                <div class="layui-pro-list-toolbar" style="padding: 0 0 10px 0;">
+                    <div class="layui-inline">
+                        <a href="javascript:;" class="layui-btn" layer-event="createModular" name='api-operation'>新建模块</a>
+                    </div>
+                </div>
+                <table class="layui-hide" id="test" lay-filter="testFilter"></table>
+            </div>
+        </div>
+    </div>
+
+    <script type="text/html" id="barDemo">
+        <a href="javascript:;" lay-event="getModular">详情</a>
+        <span class="layui-pro-divider layui-pro-divider-vertical"></span>
+        <a href="javascript:;" lay-event="editModular" >修改</a>
+        <span class="layui-pro-divider layui-pro-divider-vertical"></span>
+        <a href="javascript:;" name="api-operation" lay-event="deleteModular">删除</a>
+    </script>
+</body>
+</html>

@@ -39,13 +39,14 @@ public class CommonController {
         SysModularParameterEntity paramEntity= service.getParamEntity(handleAction);
         //TODO 先去验证
         //查询地址访问
-        if(paramEntity != null && StringUtils.isNotEmpty(paramEntity.getUrl())){
-            String result = HttpUtils.doPost(paramEntity.getUrl() + "/" + modular + "/" + func,param);
-            return result;
-        }else{
-            logger.info(handleAction + " 在数据库中未配置");
-            throw new Exception(handleAction + " 在数据库中未配置");
-        }
+//        if(paramEntity != null && StringUtils.isNotEmpty(paramEntity.getUrl())){
+//            String result = HttpUtils.doPost(paramEntity.getUrl() + "/" + modular + "/" + func,param);
+//            return result;
+//        }else{
+//            logger.info(handleAction + " 在数据库中未配置");
+//            throw new Exception(handleAction + " 在数据库中未配置");
+//        }
+        return null;
     }
 
 

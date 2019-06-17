@@ -2,9 +2,10 @@ layui.extend({
     base: 'scripts/base',
     indexTree : 'scripts/menus/menu_tree',
     indexForm : 'scripts/menus/menu_form'
-}).use(['base','indexTree','indexForm'],function () {
+}).use(['base','indexTree','indexForm','jquery'],function () {
     var indexTree = layui.indexTree;
     var indexForm = layui.indexForm;
+    var $ = layui.jquery;
 
     // 传入回调事件
     indexTree.init({
@@ -22,4 +23,9 @@ layui.extend({
     window.renderForm = function () {
         indexForm.init();
     }
+
+    $("#menuBack").on('click',function () {
+        var index = parent.layer.getFrameIndex(window.name);
+        parent.layer.close(index);
+    });
 });

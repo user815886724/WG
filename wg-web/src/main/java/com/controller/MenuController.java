@@ -102,7 +102,7 @@ public class MenuController {
             menuEntity.setDataUrl(null);
         }
         menuEntity.setStatus(StatusEnum.YES.getCode());
-        return service.updateSysMenu(menuEntity);
+        return service.updateEntity(menuEntity);
     }
 
 
@@ -119,7 +119,7 @@ public class MenuController {
         }else{
             menuEntity.setSort(service.getMaxChildrenSort(menusRequest.getParentId()));
         }
-        return service.saveSysMenu(menuEntity);
+        return service.saveEntity(menuEntity);
     }
 
 
@@ -141,7 +141,7 @@ public class MenuController {
                 String id = idArray[i];
                 SysMenuEntity sysMenuEntity = service.getMenuDetail(id);
                 sysMenuEntity.setSort(i);
-                service.updateSysMenu(sysMenuEntity);
+                service.updateEntity(sysMenuEntity);
                 callbackResult.setSuccess(true);
                 callbackResult.setMessage("顺序修改成功");
             }

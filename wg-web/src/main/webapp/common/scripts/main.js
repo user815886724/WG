@@ -138,6 +138,10 @@ layui.extend({
                 }
             }
         },
+        about : function () {
+            $(".layui-this").removeClass("layui-this");
+            $("iframe").attr("src","console_main.html");
+        },
         refresh : function () {
             var url = $("iframe").attr("src");
             $("iframe").attr("src",url);

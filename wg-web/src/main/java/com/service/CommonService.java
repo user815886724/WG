@@ -26,13 +26,15 @@ public interface CommonService {
 
     Map<String,Object> getMenuDetailMap(String id);
 
-    CallbackResult updateSysMenu(SysMenuEntity sysMenuEntity);
+    CallbackResult updateEntity(Object entity);
 
     Integer getMaxParentSort();
 
     Integer getMaxChildrenSort(String parentId);
 
-    CallbackResult saveSysMenu(SysMenuEntity sysMenuEntity);
+    CallbackResult saveEntity(Object entity);
 
     CallbackResult deleteSysMenu(String id);
+
+    CallbackResult deleteEntity(Object entity);
 }

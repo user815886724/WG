@@ -85,9 +85,9 @@ public class CommonServiceImpl implements CommonService {
 
     @Transactional
     @Override
-    public CallbackResult updateSysMenu(SysMenuEntity sysMenuEntity) {
+    public CallbackResult updateEntity(Object entity) {
         CallbackResult callbackResult = new CallbackResult();
-        Boolean tag = baseDao.update(sysMenuEntity);
+        Boolean tag = baseDao.update(entity);
         if(tag){
             callbackResult.setSuccess(true);
             callbackResult.setMessage("更新成功");
@@ -121,10 +121,10 @@ public class CommonServiceImpl implements CommonService {
 
 
     @Override
-    public CallbackResult saveSysMenu(SysMenuEntity sysMenuEntity) {
+    public CallbackResult saveEntity(Object entity) {
         CallbackResult callbackResult = new CallbackResult(false);
-        if(sysMenuEntity != null){
-            Boolean tag = baseDao.save(sysMenuEntity);
+        if(entity != null){
+            Boolean tag = baseDao.save(entity);
             if(tag){
                 callbackResult.setSuccess(true);
                 callbackResult.setMessage("创建成功");
@@ -149,6 +149,23 @@ public class CommonServiceImpl implements CommonService {
             callbackResult.setMessage("删除成功");
         }else{
             callbackResult.setMessage("删除失败");
+        }
+        return callbackResult;
+    }
+
+
+    @Override
+    public CallbackResult deleteEntity(Object entity) {
+        CallbackResult callbackResult = new CallbackResult(false);
+        try{
+            if(baseDao.delete(entity)){
+                callbackResult.setSuccess(true);
+                callbackResult.setMessage("删除成功");
+            }else{
+                callbackResult.setMessage("出现未知异常");
+            }
+        }catch (Exception e){
+            callbackResult.setMessage(e.getMessage());
         }
         return callbackResult;
     }

@@ -24,15 +24,15 @@ a,a:hover{color: #1890ff;}
 .layui-table td, .layui-table th {font-size: 12px;}
 .layui-table-cell {padding: 0 8px;}
 .layui-pro-layer-fixed .layui-layer-setwin > *:not(.layui-layer-close){display: none;}
-.layui-pro-layer-fixed .layui-layer-setwin .layui-layer-close2 {right: 2px;top: -1px;opacity: 0;}
+.layui-pro-layer-fixed .layui-layer-setwin .layui-layer-close2 {right: 10px;top: -1px;opacity: 0;display: none;}
 
 /* add - page-hd - 2018.1.3 - yowi */
 .layui-pro-page-hd {background: #fff;padding: 16px 16px 0;border-bottom: 1px solid #e8e8e8;position: relative;}
 .layui-pro-page-hd-tit {font-size: 18px;color: #333;font-weight: 400;margin-bottom: 16px;}
 .layui-pro-page-hd-desc {margin-bottom: 16px;color: #666;margin-top: -6px;}
-.layui-pro-page-hd-back {position: absolute;top: 12px;right: 16px;width: 32px;height: 32px;text-align: center;cursor: pointer;transition: all .3s;}
+.layui-pro-page-hd-back {position: absolute;top: 12px;right: 10px;width: 32px;height: 32px;text-align: center;cursor: pointer;transition: all .3s;}
 .layui-pro-page-hd-back > i{font-size: 32px;color: #666;vertical-align: middle;}
-.layui-pro-page-hd-back:hover {opacity: 0.8;}
+.layui-pro-page-hd-back:hover {opacity: 0.6;}
 .layui-pro-page-tab-btns {text-align: right;font-size: 0;position: absolute;z-index: 9;right: 16px;top: 4px;}
 .layui-pro-page-bd{position: relative;margin: 0 auto;padding: 16px;}
 .layui-pro-page-tab {margin: 0;position: relative;}

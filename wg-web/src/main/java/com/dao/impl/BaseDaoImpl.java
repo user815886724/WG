@@ -1,6 +1,9 @@
 package com.dao.impl;
 
 import com.dao.BaseDao;
+import common.CommonPageInfo;
+import common.PageParam;
+import org.apache.commons.lang.StringUtils;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.transaction.annotation.Transactional;
@@ -10,10 +13,7 @@ import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.LinkedHashMap;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 /**
  * @author huangwh
@@ -230,11 +230,12 @@ public class BaseDaoImpl<T,ID extends Serializable> implements BaseDao<T,ID> {
         }
     }
 
+
     @Override
-    public T executeSqlSingle(String sql,Class<T> o) {
+    public <T1> T1 executeSqlSingle(String sql, Class<T1> o) {
         try {
             Query query = entityManager.createNativeQuery(sql, o);
-            T result = (T) query.getSingleResult();
+            T1 result = (T1) query.getSingleResult();
             entityManager.close();
             return result;
         }catch (Exception e){
@@ -243,14 +244,42 @@ public class BaseDaoImpl<T,ID extends Serializable> implements BaseDao<T,ID> {
         }
     }
 
-
     @Override
-    public List<T> executeSql(String sql,Class<T> o) {
+    public <T1> List executeSql(String sql,Class<T1> o) {
         try{
             Query query=entityManager.createNativeQuery(sql,o);
-            List<T> result = query.getResultList();
+            List<T1> result = query.getResultList();
             entityManager.close();
             return result;
+        }catch (Exception e){
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+    @Override
+    public <T1> CommonPageInfo getPageData(String sql, PageParam pageParam, Map<String, Object> param, Class<T1> resultType) {
+        try{
+            if(param != null){
+                for(String key : param.keySet()){
+                    String tmp = String.format("{%s}",key);
+                    sql = sql.replace(tmp,param.get(key).toString());
+                }
+            }
+            String countSql = "SELECT COUNT(1) FROM (" + sql + ") tt";
+            Integer count = Integer.valueOf(executeSql(countSql).toString());
+            pageParam.setRecordTotal(count);
+            pageParam.setPageTotal(count / pageParam.getLimit() + 1);
+            if(StringUtils.isNotEmpty(pageParam.getSortField())){
+                sql += "SORT BY " + pageParam.getSortField() + " " + pageParam.getSortType();
+            }
+            Integer startIndex = (pageParam.getPageIndex() - 1) * pageParam.getLimit();
+            sql += " " + "LIMIT " + startIndex + "," + pageParam.getLimit();
+            List<T1> result = executeSql(sql,resultType);
+            CommonPageInfo commonPageInfo = new CommonPageInfo();
+            commonPageInfo.setData(result);
+            commonPageInfo.setPageParam(pageParam);
+            return commonPageInfo;
         }catch (Exception e){
             e.printStackTrace();
             return null;
