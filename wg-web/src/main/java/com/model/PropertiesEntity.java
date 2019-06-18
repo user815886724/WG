@@ -17,7 +17,7 @@ public class PropertiesEntity {
     @Id
     private String id;
 
-    @Column
+    @Column(name = "`key`")
     private String key;
 
     @Column

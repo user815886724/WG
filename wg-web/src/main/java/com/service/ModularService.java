@@ -35,4 +35,8 @@ public interface ModularService {
 
     List<PropertiesLabelEntity> getPropertiesLabelList(String application);
 
+    CommonPageInfo getLabelList(Map<String,Object> param,PageParam pageParam);
+
+    PropertiesEntity getProperties(String id);
+
 }

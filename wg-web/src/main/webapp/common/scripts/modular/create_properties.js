@@ -12,6 +12,8 @@ layui.extend({
 
     var id = utils.getUrlParams().id;
 
+    var FORM_LAY_FILTER = "modularForm";
+
     var active = {
         init : function () {
             var self = this;
@@ -23,7 +25,10 @@ layui.extend({
                 $("#application").val(application);
             }
             if(id){
-
+                request.post('/modular/getProperties',{id : id}).then(function (res) {
+                    form.val(FORM_LAY_FILTER,res);
+                    element.render();
+                });
             }
 
         },
@@ -36,6 +41,25 @@ layui.extend({
             });
         }
     };
+
+
+    form.on('submit(LAY-app-workorder-submit)', function(data) {
+        var field = data.field; //获取提交的字段
+        var index = parent.layer.getFrameIndex(window.name); //先得到当前iframe层的索引
+        field["profile"] = "stage";
+        if(id){
+            field["id"] = id;
+        }
+        request.post("/modular/saveOrUpdateProperties",field).then(function (res) {
+            if(res.success){
+                parent.layer.msg(res.message,{shift: -1,time: 1000});
+                parent.active.init();
+                parent.layer.close(index);
+            }else{
+                parent.layer.alert(res.message, {title: '创建失败'});
+            }
+        });
+    });
 
     active.init();
 

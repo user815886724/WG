@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.UUID;
 
 /**
  * @author huangwh
@@ -147,4 +148,53 @@ public class ModularController {
     private List<PropertiesLabelEntity> getPropertiesLabelList(@RequestBody GetPropertiesLabelListRequest request){
         return modularService.getPropertiesLabelList(request.getApplication());
     }
+
+    @RequestMapping("/saveOrUpdateProperties")
+    @ResponseBody
+    public CallbackResult saveOrUpdateModularProperties(@RequestBody(required = false) SaveOrUpdateModularPropertiesRequest request){
+        CallbackResult callbackResult = new CallbackResult(false);
+        if(request != null){
+            PropertiesEntity entity = new PropertiesEntity();
+            BeanUtils.copyProperties(request,entity);
+            if(StringUtils.isNotEmpty(request.getId())){
+                callbackResult = commonService.updateEntity(entity);
+            }else{
+                entity.setId(UUID.randomUUID().toString());
+                callbackResult = commonService.saveEntity(entity);
+            }
+        }else{
+            callbackResult.setMessage("参数不能为空");
+        }
+        return callbackResult;
+    }
+
+
+    @RequestMapping("/getProperties")
+    @ResponseBody
+    public PropertiesEntity getProperties(@RequestBody GetPropertiesRequest request){
+        return modularService.getProperties(request.getId());
+    }
+
+
+    @RequestMapping("/getLabelList")
+    @ResponseBody
+    public CommonPageInfo getLabelList(@RequestBody GetLabelListRequest request){
+        Map<String,Object> param = new HashMap<>();
+        if(StringUtils.isNotEmpty(request.getApplication())){
+            param.put("application",request.getApplication());
+        }
+        return modularService.getLabelList(param,request.getPageParam());
+    }
+
+
+    @RequestMapping("/saveOrUpdateLabel")
+    @ResponseBody
+    public CallbackResult saveOrUpdateLabel(@RequestBody SaveOrUpdateLabelRequest request){
+        CallbackResult callbackResult = new CallbackResult(false);
+        PropertiesLabelEntity entity = new PropertiesLabelEntity();
+        BeanUtils.copyProperties(request,entity);
+        callbackResult = commonService.saveEntity(entity);
+        return callbackResult;
+    }
+
 }

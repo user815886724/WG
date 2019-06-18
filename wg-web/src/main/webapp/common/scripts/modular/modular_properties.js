@@ -1,3 +1,4 @@
+var active;
 layui.extend({
     base : "scripts/base"
 }).use(['base', 'request','utils','element','laytpl','form','dsTable'],function () {
@@ -16,12 +17,13 @@ layui.extend({
 
 
 
-    var active = {
+    active = {
         init : function () {
             var self = this;
             Promise.all([
                 self.initTable(),
-                self.initSelect()
+                self.initSelect(),
+                self.initActive()
             ]).then(function () {
                 initOperator();
             });
@@ -43,7 +45,7 @@ layui.extend({
                     {field:'value', title:'配置的value'},
                     {field:'application',title:'服务标识'},
                     {field:'label', title:'服务标题'},
-                    {fixed: 'right', title:'操作', toolbar: '#barDemo', width:200}
+                    {fixed: 'right', title:'操作', toolbar: '#barDemo', width:130}
                 ]],
                 page: true
             });
@@ -69,8 +71,36 @@ layui.extend({
                     verify.click();
                 }
             });
+        },
+        initActive : function(){
+            table.on('tool(testFilter)', function(obj){
+                var data = obj.data;
+                if(obj.event === 'ediProperties'){
+                    layer.open({
+                        type: 2,
+                        title: '新增配置',
+                        content: "./create_properties.html?application="+application + "&id=" + data.id,
+                        area: ["60%", "85%"],
+                        btn: ["确定","关闭"],
+                        yes:function (index, layero) {
+                            var verify = layero.find("iframe").contents().find("#LAY-app-workorder-submit");
+                            verify.click();
+                        }
+                    });
+                }
+            });
+        },
+        labelList : function () {
+            layer.open({
+                type: 2,
+                title: '标题管理',
+                content: "./properties_label.html?application="+application,
+                area: ["60%", "85%"],
+                btn: ["关闭"]
+            });
         }
     };
+
 
     function initOperator() {
         form.on("select(labelSelect)",function (data) {

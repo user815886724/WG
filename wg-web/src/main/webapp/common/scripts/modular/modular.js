@@ -36,7 +36,7 @@ layui.extend({
                     {field:'getway',title:'网关代码'},
                     {field:'application', title:'服务名称'},
                     {field:'desp',title:'服务描述'},
-                    {fixed: 'right', title:'操作', toolbar: '#barDemo', width:200}
+                    {fixed: 'right', title:'操作', toolbar: '#barDemo', width:150}
                 ]],
                 page: true
             });

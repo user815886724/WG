@@ -92,4 +92,23 @@ public class ModularServiceImpl implements ModularService {
         String sql = "SELECT * FROM properties_label WHERE application = '"+ application +"'";
         return baseDao.executeSql(sql,PropertiesLabelEntity.class);
     }
+
+
+    @Override
+    public CommonPageInfo getLabelList(Map<String, Object> param, PageParam pageParam) {
+        String sql = "SELECT * FROM properties_label WHERE 1=1";
+        if(param != null){
+            for(String key : param.keySet()){
+                sql += " AND " + key + " = " + "'" + param.get(key) + "'";
+            }
+        }
+        return baseDao.getPageData(sql,pageParam ,null,PropertiesLabelEntity.class);
+    }
+
+    @Override
+    public PropertiesEntity getProperties(String id) {
+        String sql = "SELECT * FROM properties WHERE id = '"+ id + "'";
+        return (PropertiesEntity)baseDao.executeSqlSingle(sql,PropertiesEntity.class);
+    }
+    
 }
