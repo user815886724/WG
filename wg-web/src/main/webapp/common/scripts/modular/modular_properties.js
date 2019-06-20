@@ -72,6 +72,23 @@ layui.extend({
                 }
             });
         },
+        deletes : function () {
+           var checkStatus = table.checkStatus('tableReload');
+            var ids = [];
+            $(checkStatus.data).each(function (i, o) {//o即为表格中一行的数据
+                ids.push(o.id);
+            });
+            ids = ids.join(",");
+            layer.confirm("确定删除该" + checkStatus.data.length + "个配置项吗?",{icon : 3,title : '提示'},function (index) {
+                request.post("/modular/deleteLotProperties",{ids : ids}).then(function (res) {
+                    layer.msg(res.message)
+                    if(res.success){
+                        active.init();
+                    }
+                });
+            });
+
+        },
         initActive : function(){
             table.on('tool(testFilter)', function(obj){
                 var data = obj.data;

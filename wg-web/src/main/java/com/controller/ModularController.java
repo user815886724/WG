@@ -220,4 +220,20 @@ public class ModularController {
         CallbackResult callbackResult = commonService.deleteEntity(labelEntity);
         return callbackResult;
     }
+
+
+    @RequestMapping("/deleteLotProperties")
+    @ResponseBody
+    public CallbackResult deleteLotProperties(@RequestBody DeleteLotPropertiesRequest request){
+        CallbackResult callbackResult = new CallbackResult(false);
+        for(String id : request.getIds().split(",")){
+            PropertiesEntity entity = new PropertiesEntity();
+            entity.setId(id);
+            callbackResult = commonService.deleteEntity(entity);
+            if(!callbackResult.isSuccess()){
+                break;
+            }
+        }
+        return callbackResult;
+    }
 }
