@@ -87,6 +87,18 @@ layui.extend({
                             verify.click();
                         }
                     });
+                }else if(obj.event === "deleteProperties"){
+                    layer.confirm("确定删除 " + data.key + " 吗?",{icon : 3,title : '提示'},function (index) {
+                        request.post("/modular/deleteProperties",{id:data.id}).then(function (res) {
+                            layer.close(index);
+                            if(res.success){
+                                layer.msg('删除成功！', { time: 1000 });
+                                active.init();
+                            }else{
+                                layer.alert(res.message, {title: '删除失败'});
+                            }
+                        });
+                    });
                 }
             });
         },

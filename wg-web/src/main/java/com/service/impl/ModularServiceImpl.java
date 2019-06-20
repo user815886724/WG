@@ -110,5 +110,22 @@ public class ModularServiceImpl implements ModularService {
         String sql = "SELECT * FROM properties WHERE id = '"+ id + "'";
         return (PropertiesEntity)baseDao.executeSqlSingle(sql,PropertiesEntity.class);
     }
-    
+
+
+    @Override
+    public CallbackResult deletePropertiesChild(String code) {
+        CallbackResult callbackResult = new CallbackResult(false);
+        try{
+            SysModularParameterEntity modularParameterEntity = this.getModularParameter(code);
+            String sql = "DELETE FROM properties WHERE application = '"+ modularParameterEntity.getApplication() +"'";
+            baseDao.deleteSql(sql);
+            String labelSql = "DELETE FROM properties_label WHERE application = '" + modularParameterEntity.getApplication() + "'";
+            baseDao.deleteSql(labelSql);
+            callbackResult.setSuccess(true);
+            callbackResult.setMessage("删除成功");
+        }catch (Exception e){
+            callbackResult.setMessage(e.getMessage());
+        }
+        return callbackResult;
+    }
 }

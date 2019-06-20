@@ -39,4 +39,6 @@ public interface ModularService {
 
     PropertiesEntity getProperties(String id);
 
+    CallbackResult deletePropertiesChild(String code);
+
 }

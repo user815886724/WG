@@ -120,7 +120,11 @@ public class ModularController {
     public CallbackResult deleteModular(@RequestBody DeleteModularRequest request){
         SysModularParameterEntity modularParameterEntity = new SysModularParameterEntity();
         BeanUtils.copyProperties(request,modularParameterEntity);
-        return commonService.deleteEntity(modularParameterEntity);
+        CallbackResult callbackResult = modularService.deletePropertiesChild(request.getCode());
+        if(callbackResult.isSuccess()){
+            callbackResult = commonService.deleteEntity(modularParameterEntity);
+        }
+        return callbackResult;
     }
 
     @RequestMapping("/getModularDetail")
@@ -197,4 +201,23 @@ public class ModularController {
         return callbackResult;
     }
 
+
+    @RequestMapping("/deleteProperties")
+    @ResponseBody
+    public CallbackResult deleteProperties(@RequestBody DeletePropertiesRequest request){
+        PropertiesEntity entity = new PropertiesEntity();
+        entity.setId(request.getId());
+        CallbackResult callbackResult = commonService.deleteEntity(entity);
+        return callbackResult;
+    }
+
+
+    @RequestMapping("/deletePropertiesLabel")
+    @ResponseBody
+    public CallbackResult deletePropertiesLabel(@RequestBody DeletePropertiesLabelRequest request){
+        PropertiesLabelEntity labelEntity = new PropertiesLabelEntity();
+        BeanUtils.copyProperties(request,labelEntity);
+        CallbackResult callbackResult = commonService.deleteEntity(labelEntity);
+        return callbackResult;
+    }
 }

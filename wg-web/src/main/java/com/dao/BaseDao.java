@@ -109,6 +109,13 @@ public interface BaseDao<T,ID extends Serializable> {
      */
     Object executeSql(String sql);
 
+
+    /**
+     *
+     * @param sql
+     */
+    void deleteSql(String sql);
+
     /**
      * 多个实体返回对象
      * @param sql

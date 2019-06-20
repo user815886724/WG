@@ -15,6 +15,7 @@ layui.extend({
         init : function () {
             var self = this;
             self.initTable();
+            self.initActive();
         },
         initTable : function () {
             table.render({
@@ -46,6 +47,24 @@ layui.extend({
                 yes:function (index, layero) {
                     var verify = layero.find("iframe").contents().find("#LAY-app-workorder-submit");
                     verify.click();
+                }
+            });
+        },
+        initActive : function () {
+            table.on('tool(testFilter)', function(obj){
+                var data = obj.data;
+                if(obj.event === 'deleteLabel'){
+                    layer.confirm("确定删除 " + data.label + " 吗?",{icon : 3,title : '提示'},function (index) {
+                        request.post("/modular/deletePropertiesLabel",{application : data.application, label : data.label}).then(function (res) {
+                            layer.close(index);
+                            if(res.success){
+                                layer.msg('删除成功！', { time: 1000 });
+                                active.init();
+                            }else{
+                                layer.alert(res.message, {title: '删除失败'});
+                            }
+                        });
+                    });
                 }
             });
         }

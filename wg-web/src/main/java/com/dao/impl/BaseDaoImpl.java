@@ -231,6 +231,19 @@ public class BaseDaoImpl<T,ID extends Serializable> implements BaseDao<T,ID> {
     }
 
 
+    @Transactional
+    @Override
+    public void deleteSql(String sql){
+        try {
+            Query query = entityManager.createNativeQuery(sql);
+            query.executeUpdate();
+            entityManager.close();
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+    }
+
+
     @Override
     public <T1> T1 executeSqlSingle(String sql, Class<T1> o) {
         try {
