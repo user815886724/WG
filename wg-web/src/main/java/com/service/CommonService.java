@@ -37,4 +37,6 @@ public interface CommonService {
     CallbackResult deleteSysMenu(String id);
 
     CallbackResult deleteEntity(Object entity);
+
+    CallbackResult refresh();
 }

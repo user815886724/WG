@@ -87,6 +87,7 @@ public class ModularController {
                 modularHostEntity.setPort(request.getPort());
             }
             callbackResult = commonService.updateEntity(modularHostEntity);
+            commonService.refresh();
         }else{
             callbackResult.setMessage("参数为空");
         }
@@ -108,6 +109,7 @@ public class ModularController {
                 BeanUtils.copyProperties(request,modularParameterEntity);
                 callbackResult = commonService.updateEntity(modularParameterEntity);
             }
+            commonService.refresh();
         }else {
             callbackResult.setMessage("参数值为空");
         }

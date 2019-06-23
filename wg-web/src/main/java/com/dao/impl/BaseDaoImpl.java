@@ -60,11 +60,11 @@ public class BaseDaoImpl<T,ID extends Serializable> implements BaseDao<T,ID> {
     public Object findObjectBySql(String tableName, String filed, Object o) {
         String sql="from "+tableName+" u WHERE u."+filed+"= ?";
         System.out.println(sql+"--------sql语句-------------");
-        Query query=entityManager.createQuery(sql);
-        query.setParameter(0,o);
 
-        entityManager.close();
         try{
+            Query query=entityManager.createQuery(sql);
+            query.setParameter(0,o);
+            entityManager.close();
             Object result = query.getSingleResult();
             return result;
         }catch (NoResultException e){

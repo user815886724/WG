@@ -1,5 +1,6 @@
 package com.service.impl;
 
+import com.common.CommonParameter;
 import com.dao.BaseDao;
 import com.model.SysMenuEntity;
 import com.model.SysModularParameterEntity;
@@ -12,6 +13,7 @@ import org.springframework.transaction.annotation.Transactional;
 import utils.JavaBeanUtil;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -28,7 +30,7 @@ public class CommonServiceImpl implements CommonService {
 
     @Override
     public SysModularParameterEntity getParamEntity(String code) {
-        return (SysModularParameterEntity) baseDao.findObjectBySql("sys_modular_parameter","code",code);
+        return (SysModularParameterEntity) baseDao.findObjectBySql("SysModularParameterEntity","code",code);
     }
 
 
@@ -167,6 +169,15 @@ public class CommonServiceImpl implements CommonService {
         }catch (Exception e){
             callbackResult.setMessage(e.getMessage());
         }
+        return callbackResult;
+    }
+
+    @Override
+    public CallbackResult refresh() {
+        CommonParameter.parameterEntityMap = new HashMap<>();
+        CommonParameter.modularHostEntity = null;
+        CallbackResult callbackResult = new CallbackResult(true);
+        callbackResult.setMessage("刷新缓存成功");
         return callbackResult;
     }
 }
