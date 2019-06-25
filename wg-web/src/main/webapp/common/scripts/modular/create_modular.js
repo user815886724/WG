@@ -15,8 +15,11 @@ layui.extend({
     var controller = {
         init : function () {
             var self = this;
-            self.renderTypeSelect();
-            self.renderDetail();
+            Promise.all([
+                self.renderTypeSelect()
+            ]).then(function () {
+                self.renderDetail();
+            });
         },
         renderDetail : function () {
             if(code){
@@ -28,7 +31,7 @@ layui.extend({
         },
         renderTypeSelect : function () {
             var $select = $('select[name="type"]');
-            request.post('/modular/getModularTypeList').then(function (res) {
+            return request.post('/modular/getModularTypeList').then(function (res) {
                 $select.append('<option value="">请选择</option>');
                 $.each(res, function (i, e) {
                     $select.append('<option value="' + e.code + '">' + e.name + '</option>');
