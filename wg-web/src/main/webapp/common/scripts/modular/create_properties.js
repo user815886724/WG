@@ -17,8 +17,11 @@ layui.extend({
     var active = {
         init : function () {
             var self = this;
-            self.initForm();
-            self.initSelect();
+            Promise([
+                self.initSelect()
+            ]).then(function () {
+                self.initForm()
+            });
         },
         initForm : function () {
             if(application){
@@ -33,7 +36,7 @@ layui.extend({
 
         },
         initSelect : function () {
-            request.post("/modular/getPropertiesLabelList",{application:application }).then(function (res) {
+            return request.post("/modular/getPropertiesLabelList",{application:application }).then(function (res) {
                 $.each(res,function (index,item) {
                     $("#childrenLabelSelect").append("<option value='"+item.label+"'>"+ item.label +"</option>");
                 });
