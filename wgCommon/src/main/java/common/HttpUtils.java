@@ -5,8 +5,8 @@
  */
 package common;
 
+import com.alibaba.fastjson.JSONObject;
 import exception.HippoException;
-import net.sf.json.JSONObject;
 import org.apache.commons.httpclient.HttpClient;
 import org.apache.commons.httpclient.HttpMethod;
 import org.apache.commons.httpclient.HttpStatus;
@@ -172,9 +172,10 @@ public class HttpUtils {
         HttpClient client = new HttpClient();
         PostMethod method = new PostMethod(url);
         method.setRequestHeader("Connection", "close");
+        method.setRequestHeader("Content-Type","application/json;charset=UTF-8");
         String response = null;
         try {
-            method.setRequestBody(JSONObject.fromObject(params).toString());
+            method.setRequestBody(JSONObject.toJSONString(params));
             client.executeMethod(method);
             InputStream in = method.getResponseBodyAsStream();
             response = IOUtils.toString(in, "UTF-8");

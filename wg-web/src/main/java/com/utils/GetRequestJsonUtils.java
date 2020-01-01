@@ -1,6 +1,6 @@
 package com.utils;
 
-import net.sf.json.JSONObject;
+import com.alibaba.fastjson.JSONObject;
 
 import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
@@ -14,7 +14,7 @@ public class GetRequestJsonUtils {
 
     public static JSONObject getRequestJsonObject(HttpServletRequest request) throws IOException {
         String json = getRequestJsonString(request);
-        return JSONObject.fromObject(json);
+        return JSONObject.parseObject(json);
     }
     /***
      * 获取 request 中 json 字符串的内容

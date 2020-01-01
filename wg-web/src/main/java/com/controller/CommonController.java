@@ -1,12 +1,12 @@
 package com.controller;
 
 
+import com.alibaba.fastjson.JSONArray;
+import com.alibaba.fastjson.JSONObject;
 import com.common.CommonParameter;
-import com.model.ModularHostEntity;
 import com.model.SysModularParameterEntity;
 import com.service.CommonService;
 import com.service.ModularService;
-import com.utils.GetRequestJsonUtils;
 import common.CallbackResult;
 import common.HttpUtils;
 import org.apache.commons.lang.StringUtils;
@@ -20,9 +20,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.util.HashMap;
 import java.util.Map;
 
 /**
@@ -46,7 +43,7 @@ public class CommonController {
 
     @RequestMapping("/api/{handleAction}/{modular}/{func}")
     @ResponseBody
-    public String forwardApi(@PathVariable("handleAction") String handleAction,@PathVariable("modular") String modular,
+    public Object forwardApi(@PathVariable("handleAction") String handleAction,@PathVariable("modular") String modular,
            @PathVariable("func") String func, @RequestBody(required = false) Map<String,Object> map, HttpServletRequest request)throws Exception{
 
         // 查询模块，查完之后将值缓存到内存，避免多次请求重复查询数据库，如修改，开放一个清空缓存的接口即可
@@ -77,6 +74,10 @@ public class CommonController {
             String redirectUrl = String.format(url,CommonParameter.modularHostEntity.getIp(),CommonParameter.modularHostEntity.getPort(),
                     paramEntity.getGetway(),modular,func);
             String result = HttpUtils.doPost(redirectUrl,map);
+            Object resultJson = this.parseJson(result);
+            if(resultJson != null){
+                return resultJson;
+            }
             return result;
         }else {
             logger.info("网关的IP或端口不能为空");
@@ -84,6 +85,20 @@ public class CommonController {
         }
     }
 
+
+    private Object parseJson(String str){
+        try {
+            Object jsonStr= JSONObject.parseObject(str);
+            return  jsonStr;
+        } catch (Exception e) {
+            try{
+                Object jsonStr= JSONArray.parseArray(str);
+                return jsonStr;
+            }catch (Exception e1){
+                return null;
+            }
+        }
+    }
 
     @RequestMapping("/refresh")
     @ResponseBody

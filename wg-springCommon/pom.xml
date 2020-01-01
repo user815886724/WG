@@ -92,6 +92,13 @@
             <version>${lombok.version}</version>
         </dependency>
 
+
+
+        <dependency>
+            <groupId>com.summarize</groupId>
+            <artifactId>wgCommon</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
     </dependencies>
 
 

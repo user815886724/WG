@@ -9,6 +9,15 @@ import java.util.List;
  */
 public class CommonPageInfo<T> {
 
+    public CommonPageInfo() {
+    }
+
+
+    public CommonPageInfo(List<T> data, PageParam pageParam) {
+        this.data = data;
+        this.pageParam = pageParam;
+    }
+
     private List<T> data;
 
     private PageParam pageParam;
