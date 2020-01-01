@@ -95,7 +95,7 @@ public class DatasourceController {
     @RequestMapping("/getDatasource")
     @ResponseBody
     public CallbackResult getDatasource(@RequestBody GetDatasourceRequest request){
-        CallbackResult callbackResult = new CallbackResult(false);
+        CallbackResult callbackResult = datasourceService.getDatasource(request.getDatasourceId());
         return callbackResult;
     }
 }

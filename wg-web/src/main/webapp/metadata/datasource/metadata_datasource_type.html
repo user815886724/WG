@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>数据源</title>
+    <meta name="renderer" content="webkit" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=2"/>
+    <link type="text/css" rel="stylesheet" href="../../common/lib/layui/css/layui.css">
+    <link type="text/css" rel="stylesheet" href="../../common/lib/layui/css/layui-pro.css">
+</head>
+<body  class="layui-pro-body-bg">
+    <div class="layui-pro-page-hd">
+        <div class="layui-pro-page-hd-tit">数据源</div>
+        <div class="layui-pro-page-hd-desc">
+            目前共有 <strong id="classCount">--</strong> 种数据源类型， <strong id="listCount">--</strong> 个数据源。
+        </div>
+    </div>
+
+
+    <div class="layui-pro-page-bd layui-tab-content" tpl-id="classData"></div>
+
+
+    <script type="text/javascript" src="../../common/lib/layui/layui.js"></script>
+    <script type="text/javascript" src="./scripts/metadata_datasource_type.js"></script>
+    <script id="classData" type="text/html">
+        <div class="layui-row layui-col-space15">
+            {{# layui.each(d.list,function(index,item){}}
+                <div class="layui-col-xs6 layui-col-sm3">
+                    <div class="layui-pro-card-meta layui-pro-card-meta-bordered">
+                        <div class="card-meta-img">
+                            <img src="{{item.iconUrl}}">
+                        </div>
+                        <div class="card-meta-con">
+                            <a href="javascript:;" onclick="active.getDatasourceList('{{item.datasourceType}}','{{item.datasourceName}}')"  class="card-meta-title" title="{{item.datasourceName}}">{{item.datasourceName}}</a>
+                            <div class="card-meta-desc ellipsis">有 {{item.datasourceCount}} 个数据源</div>
+                        </div>
+                    </div>
+                </div>
+            {{# }) }}
+        </div>
+    </script>
+</body>
+</html>

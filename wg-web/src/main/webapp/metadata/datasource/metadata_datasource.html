@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <meta name="renderer" content="webkit" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=2"/>
+    <link type="text/css" rel="stylesheet" href="../../common/lib/layui/css/layui.css">
+    <link type="text/css" rel="stylesheet" href="../../common/lib/layui/css/layui-pro.css">
+</head>
+<body  class="layui-pro-body-bg">
+    <div class="layui-pro-page-hd">
+        <div class="layui-pro-page-hd-tit">数据源管理</div>
+        <a href="javascript:;" class="layui-pro-page-hd-back" id="datasourceBack">
+            <i class="dsicon dsicon-left-circle"></i>
+        </a>
+        <div class="layui-pro-page-hd-desc"><strong id="desc"></strong>数据源管理页面</div>
+    </div>
+    <div class="layui-pro-page-bd">
+        <div class="layui-card">
+            <div class="layui-pro-page-bd">
+                <div class="layui-pro-list-toolbar" style="padding: 0 0 10px 0;">
+                    <div class="layui-inline">
+                        <a href="javascript:;" class="layui-btn" layer-event="create" name="operation">新建数据源</a>
+                        <a href="javascript:;" class="layui-btn layui-btn-danger" layer-event="deletes" name="operation">删除</a>
+                    </div>
+                    <div style="float: right;">
+                        <div class="layui-inline layui-pro-search-container">
+                            <input class="layui-input" id="searchTxt" placeholder="请输入相关数据源名称">
+                            <button class="layui-btn" data-type="reload">搜索</button>
+                        </div>
+                    </div>
+                </div>
+                <table class="layui-hide" id="test" lay-filter="testFilter"></table>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript" src="../../common/lib/layui/layui.js"></script>
+    <script type="text/javascript" src="./scripts/metadata_datasource.js"></script>
+    <script type="text/html" id="barDemo">
+        <a href="javascript:;" lay-event="ediDatasource">修改</a>
+        <span class="layui-pro-divider layui-pro-divider-vertical"></span>
+        <a href="javascript:;" lay-event="deleteDatasource">删除</a>
+    </script>
+</body>
+</html>

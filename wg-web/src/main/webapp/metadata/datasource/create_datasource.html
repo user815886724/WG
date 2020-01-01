@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>创建数据源</title>
+    <meta name="renderer" content="webkit">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
+
+
+    <link type="text/css" rel="stylesheet" href="../../common/lib/layui/css/layui.css">
+    <link type="text/css" rel="stylesheet" href="../../common/lib/layui/admin/admin.css?v=1.2.1 pro-1" media="all">
+    <link type="text/css" rel="stylesheet" href="../../common/lib/layui/css/layui-pro.css" media="all">
+    <link type="text/css" rel="stylesheet" href="../../common/lib/layui/css/global.css" media="all">
+
+    <script type="text/javascript" src="../../common/lib/layui/layui.js"></script>
+    <script type="text/javascript" src="./scripts/create_datasource.js"></script>
+</head>
+<body>
+    <div class="layui-form" lay-filter="layuiadmin-form-order" id="layuiadmin-form-order" style="padding: 20px 30px 0 0;">
+        <div class="layui-pro-page-bd">
+            <form class="layui-form" action="" lay-filter="datasourceForm" style="width: 100%;margin: 0 auto" >
+                <div class="layui-form-item">
+                    <label class="layui-form-label required">数据名称</label>
+                    <div class="layui-input-block">
+                        <input type="text" name="datasourceName" required lay-verify="required"
+                               placeholder="" class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label required">数据源IP</label>
+                    <div class="layui-input-block">
+                        <input type="text" name="datasourceIp" required lay-verify="required"
+                               placeholder="" class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label required">用户名</label>
+                    <div class="layui-input-block">
+                        <input type="text" name="datasourceUser" required lay-verify="required"
+                               placeholder="" class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label required">密码</label>
+                    <div class="layui-input-block">
+                        <input type="password" name="datasourcePassword" required lay-verify="required"
+                               placeholder="" class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">数据源描述</label>
+                    <div class="layui-input-block">
+                        <textarea name="description" placeholder="请输入内容" class="layui-textarea"></textarea>
+                    </div>
+                </div>
+                <div class="layui-form-item layui-hide">
+                    <input type="button" lay-submit lay-filter="LAY-app-workorder-submit" id="LAY-app-workorder-submit" value="确认">
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

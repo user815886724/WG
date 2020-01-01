@@ -3,6 +3,7 @@ package com.dao;
 import com.model.DatasourceEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 
 import java.util.List;
 
@@ -19,4 +20,7 @@ public interface DatasourceDao  extends JpaRepository<DatasourceEntity,String> {
 
     @Query(value = "SELECT * FROM metadata_datasource",nativeQuery = true)
     List<DatasourceEntity> getDatasourceEntities();
+
+    @Query(value = "SELECT * FROM metadata_datasource WHERE metadata_datasource.DATASOURCE_ID = :id",nativeQuery = true)
+    DatasourceEntity getDatasourceEntity(@Param(value = "id")String id);
 }

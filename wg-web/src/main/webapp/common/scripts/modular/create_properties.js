@@ -17,7 +17,7 @@ layui.extend({
     var active = {
         init : function () {
             var self = this;
-            Promise([
+            Promise.all([
                 self.initSelect()
             ]).then(function () {
                 self.initForm()

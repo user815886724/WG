@@ -5,6 +5,7 @@ import com.model.DatasourceEntity;
 import common.CallbackResult;
 import common.CommonPageInfo;
 import common.PageParam;
+import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Example;
 import org.springframework.data.domain.ExampleMatcher;
@@ -92,6 +93,22 @@ public class DatasourceService {
             callbackResult.setMessage("保存成功");
         }catch (Exception e){
             callbackResult.setMessage(e.getMessage());
+        }
+        return callbackResult;
+    }
+
+    public CallbackResult getDatasource(String id){
+        CallbackResult callbackResult = new CallbackResult(false);
+        if(StringUtils.isNotBlank(id)){
+            try {
+                DatasourceEntity datasourceEntity =  dao.getDatasourceEntity(id);
+                callbackResult.setDetails(datasourceEntity);
+                callbackResult.setSuccess(true);
+            }catch (Exception e){
+                callbackResult.setMessage(e.getMessage());
+            }
+        }else{
+            callbackResult.setMessage("主键值为空");
         }
         return callbackResult;
     }
